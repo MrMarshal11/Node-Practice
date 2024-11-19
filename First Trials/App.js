@@ -1,5 +1,14 @@
-const conclusion = () => 'hello world. its me again';
+const { createServer } = require('node:http');
 
-for (i=1; i<=10; i++) {
-    console.log(`${i}. ${conclusion()}`)    
-}
+const hostname = '127.4.3.0';
+const port = 3927;
+
+const server = createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World 2');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
