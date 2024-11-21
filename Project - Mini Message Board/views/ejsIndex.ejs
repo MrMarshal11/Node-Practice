@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Welcome to your home page, lad</h1>
+
+    <h2>Your message board below.</h2>
+    <% messages.map(message => { %>
+        <ul>
+            <li>Name: <%= message.user %></li>
+            <li>Text: <%= message.text %></li>
+            <li>Date: <%= message.added %></li>
+            <button type="button">View Message?</button>
+        </ul>
+    <% }) %>
+
+    <a href="/new">Make a post!</a>
+</body>
+</html>

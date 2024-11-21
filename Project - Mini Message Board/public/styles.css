@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(59, 59, 59);
+  color: white;
+  min-height: 100vh;
+  height: auto;
+}
+
+ul {
+  border: 1px solid white;
+  background-color: rgb(129, 10, 10);
+  padding: 10px;
+  list-style: none;
+  button {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
+a {
+  color: white;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: column;
+  gap: 15px;
+  fieldset {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column;
+    gap: 5px;
+  }
+}
