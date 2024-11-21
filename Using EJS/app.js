@@ -1,4 +1,4 @@
-import express from "express";
+import express, { text } from "express";
 import path from "node:path";
 
 import aboutRouter from "./routes/aboutRouter.js";
@@ -15,6 +15,7 @@ app.set("view engine", "ejs");
 const links = [
     { href: "/", text: "Home" },
     { href: "about", text: "About" },
+    { href: "more-about", text: "moreAbout" },
   ];
 
 const users = ["Rose", "Cake", "Biff"];
@@ -22,6 +23,13 @@ const users = ["Rose", "Cake", "Biff"];
 app.get("/", (req, res) => {
     res.render("index", { links: links, users: users });
   });
+
+// Temporary More About Page
+const moreAbout = "You're in the More About Page!";
+
+app.get("/more-about", (req, res) => {
+  res.render("moreAbout", {moreAbout: moreAbout})
+})
 
 // Serving static assets
 const assetsPath = path.join(process.cwd(), "public");
