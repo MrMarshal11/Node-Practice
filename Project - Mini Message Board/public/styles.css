@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid white; */
+}
+
 body {
   display: flex;
   flex-flow: column;
@@ -7,6 +13,9 @@ body {
   color: white;
   min-height: 100vh;
   height: auto;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 ul {
@@ -36,5 +45,29 @@ form {
     justify-content: flex-start;
     flex-flow: column;
     gap: 5px;
+  }
+}
+
+#sidebar {
+  display: flex;
+  flex-flow: column;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
+  background-color: brown;
+  ul {
+    border: none;
+    background-color: brown;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    gap:30px;
+    a {
+      text-decoration: none;
+    }
   }
 }

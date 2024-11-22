@@ -7,7 +7,9 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome to your home page, lad</h1>
+    <%- include('ejsSideBar') %>
+
+    <h1>Welcome to your home page</h1>
 
     <h2>Your message board below.</h2>
     <% messages.map(message => { %>
