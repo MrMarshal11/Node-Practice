@@ -1,8 +1,8 @@
 import express from 'express';
-import indexController from '../controllers/indexController.js';
+import newController from '../controllers/newController.js'
 
 const indexRoute = express.Router();
 
-indexRoute.get("/", indexController.initialRender);
+indexRoute.get("/", newController.getUserNames);
 
 export default indexRoute;

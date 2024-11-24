@@ -1,10 +1,19 @@
-const renderForm = (req, res) => {
-        res.render('new');
+import db from "../db/queries.js";
+
+async function getUserNames(req, res) {
+  const usernames = await db.getAllUsernames();
+  console.log("Usernames: ", usernames);
+  res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
 }
 
-const postForm = (req, res) => {
-    console.log("username to be saved: ", req.body.username);
-    res.end();
+async function renderForm(req, res) {
+  await res.render("new");
 }
 
-export default {renderForm, postForm};
+async function postForm(req, res) {
+  const { username } = req.body;
+  await db.insertUsername(username);
+  res.redirect("/");
+}
+
+export default { getUserNames, renderForm, postForm };
