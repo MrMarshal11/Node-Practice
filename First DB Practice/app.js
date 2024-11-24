@@ -1,7 +1,7 @@
 import express from 'express';
 
-import indexRoute from './routes/index.js';
-import newRoute from './routes/new.js';
+import indexRoute from './routes/indexRoute.js';
+import newRoute from './routes/newRoute.js';
 
 const app = express();
 const port = 8080;
