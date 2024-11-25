@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-image: radial-gradient(darkblue, black);
+    min-height: 100vh;
+    height: auto;
+    color: white;
+    flex-flow: column;
+}
+
+.mainPokemon {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+}
+
+fieldset {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; 
+    flex-flow: column;
+}
