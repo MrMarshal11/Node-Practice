@@ -12,9 +12,9 @@
     <h1>Welcome to your home page</h1>
 
     <h2>Your message board below.</h2>
-    <% messages.map(message => { %>
+    <% message_board.map(message => { %>
         <ul>
-            <li>Name: <%= message.user %></li>
+            <li>Name: <%= message.username %></li>
             <li>Text: <%= message.text %></li>
             <li>Date: <%= message.added %></li>
             <button type="button">View Message?</button>
