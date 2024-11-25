@@ -19,7 +19,7 @@ router.get("/new", (req, res) => {
 
 router.post("/new", (req, res) => {
   const { messageText, messageUser } = req.body; // Extract data from the form
-  db.newMessage({ text: messageText, username: messageUser, added: new Date() });
+  db.newMessage(messageText, messageUser);
   res.redirect("/");
 })
 

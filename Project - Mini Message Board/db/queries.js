@@ -1,8 +1,8 @@
 import pool from "./pool.js";
 
-async function newMessage(text, username, added) {
+async function newMessage(text, username) {
     try {
-        await pool.query(`INSERT INTO messages (text, username, added) VALUES ($1, $2, $3)`, [text, username, added]);
+        await pool.query(`INSERT INTO messages (text, username, added) VALUES ($1, $2, $3)`, [text, username, new Date()]);
         console.log('inserted new message.');
     } catch (error) {
         console.log('In newMessage()');
