@@ -7,8 +7,13 @@
     <title>index doc</title>
 </head>
 <body>
+    <% if (Array.isArray(usernames) && usernames.length > 0) { %>
     <p>Usernames: <%= usernames.map((user) => user.username).join(", ") %></p>
+    <% } else { %>
+        <p>No current usernames.</p>
+    <% } %>
     <a href="/new">New form?</a>
+    <a href="/delete">Delete Current DataBase?</a>
     <%- include("partials/search") %>
 </body>
 </html>

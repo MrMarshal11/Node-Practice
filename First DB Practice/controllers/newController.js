@@ -1,19 +1,30 @@
 import db from "../db/queries.js";
 
 async function showName(req, res) {
-    const search = req.query.search; // Extract 'search' query parameter from the URL
+  try {
+    const search = req.query.search;
     let usernames;
 
     if (search) {
-      // If a search query is provided, perform a filtered search
-      usernames = await db.searchName(search); // Ensure `searchName` is implemented in your DB layer
+      // Perform a filtered search
+      usernames = await db.searchName(search);
     } else {
-      // If no search query, fetch all usernames
+      // Fetch all usernames
       usernames = await db.getAllUsernames();
     }
+
+    if (!Array.isArray(usernames)) {
+      usernames = []; // Fallback to an empty array
+    }
+
     console.log("Usernames: ", usernames);
     res.render("index", { usernames });
+  } catch (error) {
+    console.error("Error in showName:", error);
+    res.status(500).send("An error occurred in the showName function");
+  }
 }
+
 
 async function renderForm(req, res) {
   await res.render("new");
