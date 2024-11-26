@@ -11,7 +11,7 @@
     <h1>Pokemon Trainers</h1>
     <div class="trainersDiv">
         <% trainers.map((object) => {%>
-          <h2 ><%= object.trainer %></h2>
+          <h2 onclick="viewTeamsButton()"><%= object.trainer %></h2>
         <% }) %>
     </div> 
     <div class="bottomRow">
