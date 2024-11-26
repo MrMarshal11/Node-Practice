@@ -19,3 +19,16 @@ body {
     flex-flow: row;
     justify-content: space-between;
 }
+
+.trainersDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    width: 80vw;
+    background-color: #131329;
+    border: solid white 3px;
+    h2 {
+        padding: 30px;
+    }
+}
