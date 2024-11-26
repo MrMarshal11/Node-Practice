@@ -24,11 +24,50 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-flow: row wrap;
+    flex-flow: row;
     width: 80vw;
     background-color: #131329;
     border: solid white 3px;
     h2 {
         padding: 30px;
     }
+}
+
+.teamsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: row;
+    width: 80vw;
+    background-color: #131329;
+    border: solid white 3px;
+    border-radius: 80px;
+    h2 {
+        padding: 30px;
+    }
+}
+
+.innerTeamsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row;
+    width: 65vw;
+    background-color: #131329;
+}
+
+.outerTeamsDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    width: 90vw;
+    gap: 20px;
+}
+
+.teamsImg {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(0, 255, 0);
+    border: 1px dotted white;
 }
