@@ -31,14 +31,14 @@ INSERT INTO trainers (trainer_name) VALUES
 
 -- Insert initial values into pokemon
 INSERT INTO pokemon (name, trainer) VALUES 
-  ('magneton', 'jim'),
-  ('ampharos', 'jim'),
-  ('pikachu', 'bo'),
-  ('groudon', 'amp'),
-  ('piplup', 'bo'),
-  ('regigigas', 'jim'),
-  ('kingdra', 'jim'),
-  ('onix', 'bo');
+  ('magneton', 'Aazuri'),
+  ('ampharos', 'Aazuri'),
+  ('pikachu', 'Aazuri'),
+  ('groudon', 'Timaro'),
+  ('piplup', 'Timaro'),
+  ('regigigas', 'Jenma'),
+  ('kingdra', 'Jenma'),
+  ('onix', 'Jenma');
 
 -- Insert initial values into trainers_pokemon
 INSERT INTO trainers_pokemon (trainer_id, pokemon_id) VALUES 
