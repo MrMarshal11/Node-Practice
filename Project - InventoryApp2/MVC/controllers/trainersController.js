@@ -1,8 +1,8 @@
-import getTrainers from "../model/queries.js";
+import model from "../model/queries.js";
 
 async function renderTrainers(req, res) {
     try {
-        const trainers = await getTrainers();
+        const trainers = await model.getTrainers();
         res.render("trainers", {trainers});
     } catch (error) {
         console.log('error at renderTrainers()');

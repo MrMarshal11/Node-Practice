@@ -3,6 +3,6 @@ import renderTeam from "../MVC/controllers/teamController.js"
 
 const teamRouter = express.Router();
 
-teamRouter.get("/", renderTeam);
+teamRouter.get("/:trainerName", renderTeam);
 
 export default teamRouter;

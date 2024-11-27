@@ -4,35 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon | team</title>
-    <link rel="stylesheet" href="trainers.css" />
+    <link rel="stylesheet" href="/trainers.css" />
   </head>
   <body>
     <h1>Trainer's Team</h1>
     <div class="teamDiv">
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
-      <div class="pokemonDiv">
-        <h3>pokemonName</h3>
-        <div class="teamImg"></div>
-      </div>
+      <% team.map((obj) => { %>
+        <div class="pokemonDiv">
+          <h3><%= obj.pokemon %></h3>
+          <div class="teamImg"></div>
+        </div>
+      <% }) %>
     </div>
     <div class="bottomRow">
       <button><a href="/newPokemon">Add Pokemon?</a></button>

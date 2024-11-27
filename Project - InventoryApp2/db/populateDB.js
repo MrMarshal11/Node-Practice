@@ -68,14 +68,3 @@ async function populateDB() {
 }
 
 populateDB();
-
-// For trainer and pokemon relationship table
-
-// SELECT
-//   trainers.trainer_name AS trainer,
-//   pokemon.name AS pokemon
-// FROM trainers
-// LEFT JOIN trainers_pokemon
-//   ON trainers.id = trainers_pokemon.trainer_id
-// LEFT JOIN pokemon
-//   ON trainers_pokemon.pokemon_id = pokemon.id;

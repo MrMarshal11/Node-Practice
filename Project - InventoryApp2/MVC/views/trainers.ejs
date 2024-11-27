@@ -10,7 +10,7 @@
     <h1>Pokemon Trainers</h1>
     <div class="trainersDiv">
       <% trainers.map((obj) => { %>
-        <h2><a href="/team"><%= obj.trainer_name %></a></h2>
+        <h2><a href="/team/<%= obj.trainer_name %>"><%= obj.trainer_name %></a></h2>
       <% }) %>
     </div> 
     <div class="bottomRow">
