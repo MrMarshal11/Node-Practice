@@ -9,8 +9,9 @@
   <body>
     <h1>Pokemon Trainers</h1>
     <div class="trainersDiv">
-          <h2><a href="/team">Trainer 1</a></h2>
-          <h2><a href="/team">Trainer 2</a></h2>
+      <% trainers.map((obj) => { %>
+        <h2><a href="/team"><%= obj.trainer_name %></a></h2>
+      <% }) %>
     </div> 
     <div class="bottomRow">
       <button><a href="/newTrainer">Add New Trainer</a></button>
