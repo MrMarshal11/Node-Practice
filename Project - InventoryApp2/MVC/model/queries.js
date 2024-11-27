@@ -29,4 +29,9 @@ async function getTeam(trainerName) {
   }
 }
 
-export default { getTrainers, getTeam };
+async function postNewTrainer(trainer) {
+  await pool.query('INSERT INTO trainers (trainer_name) VALUES ($1)', [trainer])
+  await pool.query('SELECT * FROM trainers;')
+}
+
+export default { getTrainers, getTeam, postNewTrainer };

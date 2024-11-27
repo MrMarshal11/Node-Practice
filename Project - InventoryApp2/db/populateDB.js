@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS trainers_pokemon (
 
 -- Insert initial values into trainers
 INSERT INTO trainers (trainer_name) VALUES 
-  ('jim'),
-  ('bo'),
-  ('amp');
+  ('Aazuri'),
+  ('Timaro'),
+  ('Jenma');
 
 -- Insert initial values into pokemon
 INSERT INTO pokemon (name, trainer) VALUES 
