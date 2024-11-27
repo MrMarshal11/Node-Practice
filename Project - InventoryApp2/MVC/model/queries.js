@@ -33,4 +33,8 @@ async function postNewTrainer(trainer) {
   await pool.query('INSERT INTO trainers (trainer_name) VALUES ($1)', [trainer])
 }
 
-export default { getTrainers, getTeam, postNewTrainer };
+async function postNewPokemon(pokemon, trainer) {
+  await pool.query('INSERT INTO pokemon (name, trainer) VALUES ($1, $2)', [pokemon, trainer]);
+}
+
+export default { getTrainers, getTeam, postNewTrainer, postNewPokemon };

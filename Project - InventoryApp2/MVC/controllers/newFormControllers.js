@@ -1,7 +1,8 @@
 import model from "../model/queries.js";
 
-function newPokemonFormRender(req, res) {
-    res.render("newPokemonForm");
+async function newPokemonFormRender(req, res) {
+    const { trainer } = req.params;
+    await res.render("newPokemonForm", {trainer});
 } 
 
 function newTrainerFormRender(req, res) {
@@ -14,4 +15,15 @@ function insertNewTrainer(req, res) {
     res.redirect("/trainers");
 }
 
-export default {newPokemonFormRender, newTrainerFormRender, insertNewTrainer};
+async function insertNewPokemon(req, res) {
+    try {
+        const { trainer } = req.params;
+        const { pokemon } = req.body;
+        model.postNewPokemon(pokemon, trainer);
+        res.redirect(`/team/${trainer}`);    
+    } catch (error) {
+        console.log('error at insertNewPokemon()', error);
+    }
+}
+
+export default {newPokemonFormRender, newTrainerFormRender, insertNewTrainer, insertNewPokemon};

@@ -7,6 +7,7 @@ const newTrainerFormRoute = express.Router();
 newTrainerFormRoute.get("/", newForm.newTrainerFormRender);
 newTrainerFormRoute.post("/", newForm.insertNewTrainer);
 
-newPokemonFormRoute.get("/", newForm.newPokemonFormRender);
+newPokemonFormRoute.get("/:trainer", newForm.newPokemonFormRender);
+newPokemonFormRoute.post("/:trainer", newForm.insertNewPokemon);
 
 export default {newPokemonFormRoute, newTrainerFormRoute};

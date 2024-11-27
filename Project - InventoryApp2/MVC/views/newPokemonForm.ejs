@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon | newPokemon</title>
-    <link rel="stylesheet" href="newForm.css" />
+    <link rel="stylesheet" href="/newForm.css" />
   </head>
   <body>
-    <form>
+    <form action= "/newPokemon/<%= trainer %>" method="POST">
       <fieldset>
-        <label>Pokemon Name:</label>
-        <input type="text" />
+        <label for="pokemon">Pokemon Name:</label>
+        <input type="text" name="pokemon" id="pokemon" />
       </fieldset>
       <button type="submit">Submit</button>
     </form>
