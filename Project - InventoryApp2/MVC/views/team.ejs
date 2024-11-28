@@ -13,6 +13,12 @@
         <div class="pokemonDiv">
           <h3><%= obj.pokemon %></h3>
           <div class="teamImg"></div>
+
+        <!-- Hidden Delete Form -->
+        <form action="/team/<%= trainerName %>/delete" method="POST" style="display:inline;">
+          <input type="hidden" name="pokemonName" value="<%= obj.pokemon %>" />
+          <button type="submit">Delete Pokemon?</button>
+        </form>
         </div>
       <% }) %>
     </div>

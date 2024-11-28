@@ -58,4 +58,35 @@ async function postNewPokemon(pokemon, trainer) {
   }
 }
 
-export default { getTrainers, getTeam, postNewTrainer, postNewPokemon };
+async function deletePokemonQuery(pokemonName, trainerName) {
+  try {
+    // Get the IDs
+    const trainerResult = await pool.query('SELECT id FROM trainers WHERE trainer_name = $1', [trainerName]);
+    const pokemonResult = await pool.query('SELECT id FROM pokemon WHERE name = $1', [pokemonName]);
+
+    if (trainerResult.rows.length === 0 || pokemonResult.rows.length === 0) {
+      throw new Error('Trainer or Pokémon not found');
+    }
+
+    const trainer_id = trainerResult.rows[0].id;
+    const pokemon_id = pokemonResult.rows[0].id;
+
+    // Delete the association in trainers_pokemon
+    await pool.query(
+      'DELETE FROM trainers_pokemon WHERE trainer_id = $1 AND pokemon_id = $2',
+      [trainer_id, pokemon_id]
+    );
+
+    await pool.query(
+      'DELETE FROM pokemon WHERE id = $1',
+      [pokemon_id]
+    );
+
+    console.log(`Successfully deleted ${pokemonName} from trainer ${trainerName}`);
+  } catch (error) {
+    console.log('error at deletePokemonQuery()', error);
+    throw error;
+  }
+}
+
+export default { getTrainers, getTeam, postNewTrainer, postNewPokemon, deletePokemonQuery };

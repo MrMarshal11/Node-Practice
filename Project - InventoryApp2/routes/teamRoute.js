@@ -1,8 +1,9 @@
 import express from "express";
-import renderTeam from "../MVC/controllers/teamController.js"
+import controller from "../MVC/controllers/teamController.js"
 
 const teamRouter = express.Router();
 
-teamRouter.get("/:trainerName", renderTeam);
+teamRouter.get("/:trainerName", controller.renderTeam);
+teamRouter.post("/:trainerName/delete", controller.deletePokemon);
 
 export default teamRouter;
