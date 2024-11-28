@@ -24,6 +24,7 @@ body {
 } 
 
 
-/* .indexImg { */
-
-/* } */
+.indexImg { 
+    height: 30vh;
+    width: auto;
+}
