@@ -9,10 +9,14 @@
   <body>
     <h1><%= trainerName %>'s Team</h1>
     <div class="teamDiv">
-      <% team.map((obj) => { %>
+      <% team.forEach((obj) => { %>
         <div class="pokemonDiv">
           <h3><%= obj.pokemon %></h3>
-          <div class="teamImg"></div>
+          <% if (obj.imgUrl) { %>
+            <img src="<%= obj.imgUrl %>" alt="<%= obj.pokemon %> Image" class="teamImg" />
+          <% } else { %>
+            <img src="/images/placeholder.png" alt="This isn't a pokemon buddy." class="teamImg" />
+          <% } %>
 
         <!-- Hidden Delete Form -->
         <form action="/team/<%= trainerName %>/delete" method="POST" style="display:inline;">
