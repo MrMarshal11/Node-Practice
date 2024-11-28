@@ -1,8 +1,9 @@
 import express from "express";
-import renderTrainers from "../MVC/controllers/trainersController.js";
+import controller from "../MVC/controllers/trainersController.js";
 
 const trainersRouter = express.Router();
 
-trainersRouter.get("/", renderTrainers);
+trainersRouter.get("/", controller.renderTrainers);
+trainersRouter.post("/", controller.deleteTrainer);
 
 export default trainersRouter;

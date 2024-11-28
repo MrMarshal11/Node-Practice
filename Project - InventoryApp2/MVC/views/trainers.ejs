@@ -11,6 +11,10 @@
     <div class="trainersDiv">
       <% trainers.map((obj) => { %>
         <h2><a href="/team/<%= obj.trainer_name %>"><%= obj.trainer_name %></a></h2>
+        <form action="/trainers" method="POST" style="display:inline;">
+          <input type="hidden" name="trainerName" value="<%= obj.trainer_name%>" />
+          <button type="submit">Remove Trainer?</button>
+        </form>
       <% }) %>
     </div> 
     <div class="bottomRow">

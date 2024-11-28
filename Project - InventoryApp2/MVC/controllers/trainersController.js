@@ -10,4 +10,14 @@ async function renderTrainers(req, res) {
     }
 } 
 
-export default renderTrainers;
+async function deleteTrainer(req, res) {
+    try {
+        const { trainerName } = req.body;
+        await model.deleteTrainerQuery(trainerName);
+        res.redirect(`/trainers`);
+    } catch (error) {
+        console.log('error at deleteTrainer()', error);
+    }
+}
+
+export default {renderTrainers, deleteTrainer};
