@@ -10,11 +10,13 @@
     <h1>Pokemon Trainers</h1>
     <div class="trainersDiv">
       <% trainers.map((obj) => { %>
-        <h2><a href="/team/<%= obj.trainer_name %>"><%= obj.trainer_name %></a></h2>
-        <form action="/trainers" method="POST" style="display:inline;">
-          <input type="hidden" name="trainerName" value="<%= obj.trainer_name%>" />
-          <button type="submit">Remove Trainer?</button>
-        </form>
+        <div class="trainerDiv">
+          <h2><a href="/team/<%= obj.trainer_name %>"><%= obj.trainer_name.charAt(0).toUpperCase() + obj.trainer_name.slice(1) %></a></h2>
+          <form action="/trainers" method="POST" style="display:inline;">
+            <input type="hidden" name="trainerName" value="<%= obj.trainer_name%>" />
+            <button type="submit">Remove Trainer?</button>
+          </form>
+        </div>
       <% }) %>
     </div> 
     <div class="bottomRow">

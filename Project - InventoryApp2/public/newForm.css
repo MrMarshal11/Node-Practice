@@ -19,6 +19,14 @@ form {
     align-items: center;
     justify-content: flex-start;
     flex-flow: column;
+    gap: 3vh;
+    background-image: radial-gradient(red, red, white);
+    border: 2px solid white;
+    border-radius: 100%;
+    box-shadow: 0 0 100px rgb(255, 255, 255);
+    padding: 70px;
+    padding-bottom: 100px;
+    padding-top: 100px;
 }
 
 fieldset {
@@ -26,4 +34,6 @@ fieldset {
     align-items: flex-start;
     justify-content: flex-start; 
     flex-flow: column;
+    gap: 10px;
+    border: none;
 }

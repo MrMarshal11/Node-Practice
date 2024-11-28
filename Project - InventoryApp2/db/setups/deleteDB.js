@@ -7,8 +7,8 @@ const { Client } = pkg;
 
 const SQL = `
 DROP TABLE trainers_pokemon;
-DROP TABLE trainers;
 DROP TABLE pokemon;
+DROP TABLE trainers;
 `;
 
 async function deleteDB() {

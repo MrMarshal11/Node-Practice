@@ -1,30 +1,49 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-image: radial-gradient(darkblue, black);
-    min-height: 100vh;
-    height: auto;
-    color: white;
-    flex-flow: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: radial-gradient(darkblue, black);
+  min-height: 100vh;
+  height: auto;
+  color: white;
+  flex-flow: column;
 }
 
 .mainPokemon {
-    font-size: 3.5rem;
-    font-weight: 800;
+  font-size: 5rem;
+  font-weight: 800;
+  margin-top: -20px;
 }
 
 .indexRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-flow: row;
-    min-width: 100vw;
-    width: auto;
-} 
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row;
+  min-width: 80vw;
+  width: auto;
+}
 
+.indexImg {
+  height: 30vh;
+  width: auto;
+}
 
-.indexImg { 
-    height: 30vh;
-    width: auto;
+button {
+  background-color: rgb(3, 141, 196);
+  border: none;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid white;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: rgb(0, 84, 117);
+  cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: white;
 }

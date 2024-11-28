@@ -1,108 +1,181 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-image: radial-gradient(darkblue, black);
-    min-height: 100vh;
-    height: auto;
-    color: white;
-    flex-flow: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-image: radial-gradient(darkblue, black);
+  min-height: 100vh;
+  height: auto;
+  color: white;
+  flex-flow: column;
 }
 
 .mainPokemon {
-    font-size: 3.5rem;
-    font-weight: 800;
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 3rem;
 }
 
 .bottomRow {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 80vw;
+  button {
+    background-color: rgb(3, 141, 196);
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    border: 1px solid white;
+  }
+  button:hover {
+    background-color: rgb(0, 84, 117);
+    cursor: pointer;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .trainersDiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-flow: row;
-    width: 80vw;
-    background-color: #131329;
-    border: solid white 3px;
-    h2 {
-        padding: 20px;
-    }
-    h2:hover {
-        cursor: pointer;
-        box-shadow: 0px 0px 50px 3px red;
-        background-color: red;
-        border-radius: 50%;
-    }
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80vw;
+  background-color: #131329;
+  border-radius: 50px;
+  border: solid white 3px;
+  padding-bottom: 40px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  button:hover {
+    background-color: rgb(173, 0, 0);
+    cursor: pointer;
+  }
+  h2 {
+    font-size:2rem;
+    padding: 20px;
+  }
+  h2:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 50px 3px red;
+    background-color: red;
+    border-radius: 50%;
+  }
+}
+
+.trainerDiv {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .teamsDiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-flow: row;
-    width: 80vw;
-    background-color: #131329;
-    border: solid white 3px;
-    border-radius: 80px;
-    h2 {
-        padding: 30px;
-    }
-    h2:hover {
-        cursor: pointer;
-        box-shadow: 0px 0px 50px 3px green;
-        background-color: green;
-        border-radius: 50%;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row;
+  width: 80vw;
+  background-color: #131329;
+  border: solid white 3px;
+  border-radius: 80px;
+  h2 {
+    padding: 30px;
+  }
+  h2:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 50px 3px green;
+    background-color: green;
+    border-radius: 50%;
+  }
 }
 
 .innerTeamsDiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-flow: row;
-    width: 65vw;
-    background-color: #131329;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row;
+  width: 65vw;
+  background-color: #131329;
 }
 
 .outerTeamsDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    width: 90vw;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  width: 90vw;
+  gap: 20px;
 }
 
 .teamsImg {
-    height: 100px;
-    width: 100px;
-    background-color: rgb(0, 255, 0);
-    border: 1px dotted white;
+  height: 100px;
+  width: 100px;
+  background-color: rgb(0, 255, 0);
+  border: 1px dotted white;
 }
 
 .teamDiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    width: 85vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  width: 85vw;
+  background-color: #131329;
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 50px white;
 }
 
 .pokemonDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-flow: column;
-    min-height: 50vh;
-    height: auto;
-    .teamImg {
-        height: 250px;
-        width: 150px;
-        border: 1px dotter white;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+  min-height: 50vh;
+  height: auto;
+  .teamImg {
+    height: 250px;
+    width: 150px;
+    border: 1px dotter white;
+  }
+  button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  button:hover {
+    background-color: rgb(173, 0, 0);
+    cursor: pointer;
+  }
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: -2px;
+  }
 }
-

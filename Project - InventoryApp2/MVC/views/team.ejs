@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="/trainers.css" />
   </head>
   <body>
-    <h1><%= trainerName %>'s Team</h1>
+    <h1><%= trainerName.charAt(0).toUpperCase() + trainerName.slice(1) %>'s Team</h1>
     <div class="teamDiv">
       <% team.forEach((obj) => { %>
         <div class="pokemonDiv">
-          <h3><%= obj.pokemon %></h3>
+          <h3><%= obj.pokemon.charAt(0).toUpperCase() + obj.pokemon.slice(1) %></h3>
           <% if (obj.imgUrl) { %>
             <img src="<%= obj.imgUrl %>" alt="<%= obj.pokemon %> Image" class="teamImg" />
           <% } else { %>
