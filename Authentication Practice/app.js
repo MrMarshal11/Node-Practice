@@ -10,10 +10,8 @@ const bcrypt = require("bcryptjs");
 dotenv.config();
 
 // New thing
-// basically when they enter username and password,
-// this function checks the db for the username, if no username, flag error
-// if username, then check the corresponding password and if the
-// user-entered password is exactly the same, then is valid.
+// The backbone of user authentication...
+// After user inputs login details, it checks the DB to verify.
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -41,6 +39,9 @@ passport.use(
 );
 
 // New thing
+// Basically stores the user in the session browser.
+// serializeUser stores user.id in session.
+// deserialization converts user.id back to the full user object for further requests.
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -66,6 +67,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // New thing
+// Stores session data on the server and tracks users via session ID cookie.
+// passport.session just enables user authentication to persist across multiple requests.
 app.use(
   session({
     secret: "cats",
@@ -78,7 +81,9 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 // New thing
-// If you insert this code somewhere between where you instantiate the passport middleware and before you render your views, you will have access to the currentUser variable in all of your views, and you won’t have to manually pass it into all of the controllers in which you need it.
+// This middleware adds the authenticated user object (req.user) to the res.locals object, making it accessible in all templates and views. 
+// Providing easy access to the currently logged-in user's information in any EJS views (or any other templating engine)
+// Preventing the need to always pass req.user to every template
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
