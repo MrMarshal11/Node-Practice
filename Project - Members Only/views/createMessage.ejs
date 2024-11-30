@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>New Message:</h2>
+    <form action="/createMessage" method="POST">
+        <fieldset>
+            <label for="title">Title:</label>
+            <input name="title" type="text" id="title" placeholder="New House!"/>
+        </fieldset>
+        <fieldset>
+            <label for="message">Message:</label>
+            <textarea rows="5" cols="22" name="message" type="text" id="message" placeholder="I got this house and I just wanted to let everyone know!"></textarea>
+        </fieldset>    
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

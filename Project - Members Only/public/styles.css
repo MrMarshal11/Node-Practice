@@ -53,6 +53,12 @@ input {
     padding-right: 10px;
 }
 
+textarea {
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 button {
     padding: 5px;
     padding-left: 20px;
