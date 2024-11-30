@@ -6,7 +6,9 @@ import indexRouter from "./routes/indexRoute.js";
 const app = express();
 const port = 8080;
 
-app.use(express.static('public'));
+const assetsPath = path.join(process.cwd(), "public");
+app.use(express.static(assetsPath));
+
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "views"));
