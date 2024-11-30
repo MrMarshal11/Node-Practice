@@ -103,6 +103,14 @@ a:hover {
     padding-bottom: 10vh;
 }
 
+.bottomButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    padding-bottom: 10vh;
+}
+
 .deleteButton {
     background-color: red;
     color: white;
@@ -112,5 +120,25 @@ a:hover {
 }
 
 .top {
+    padding-top: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+    h3 {
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 30px;
+        border: 2px solid white;
+    }
+    h3:hover {
+        background-color: rgb(95, 95, 95);
+    }
+}
+
+h1 {
     padding-top: 10vh;
 }
