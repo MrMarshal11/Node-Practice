@@ -1,13 +1,27 @@
-const path = require("node:path");
-const { Pool } = require("pg");
-const express = require("express");
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const dotenv = require("dotenv");
-const bcrypt = require("bcryptjs");
+// const path = require("node:path");
+// const { Pool } = require("pg");
+// const express = require("express");
+// const session = require("express-session");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
+// const dotenv = require("dotenv");
+// const bcrypt = require("bcryptjs");
+
+import path from "node:path"
+import dotenv from "dotenv"
+import passport from "passport"
+import { Strategy as LocalStrategy } from "passport-local"
+import pkg from "pg"
+import bcrypt from "bcryptjs"
+import session from "express-session"
+import express from "express"
 
 dotenv.config();
+const { Pool } = pkg;
+
+const pool = new Pool({
+  connectionString: `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+});
 
 // New thing
 // The backbone of user authentication...
@@ -58,12 +72,8 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-const pool = new Pool({
-  connectionString: `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-});
-
 const app = express();
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(process.cwd(), "views"));
 app.set("view engine", "ejs");
 
 // New thing
