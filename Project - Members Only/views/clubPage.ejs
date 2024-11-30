@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Club Page</title>
+</head>
+<body>
+    <div class="top">
+        <h2>You have to be logged in to see who posted!</h2>
+    </div>
+
+    <h1>Messages:</h1>
+    <div class="messages">
+        <div class="messageDiv">
+            <h3>Username: ...</h3>
+            <h3>Title: ...</h3>
+            <h3>Message: ...</h3>
+            <h3>Date: <%= Date() %></h3>
+            <button class="deleteButton">Delete</button>
+        </div>
+        <div class="messageDiv">
+            <h3>Username: ...</h3>
+            <h3>Title: ...</h3>
+            <h3>Message: ...</h3>
+            <h3>Date: <%= Date() %></h3>
+            <button class="deleteButton">Delete</button>
+        </div>
+    </div>
+
+    <div class="bottomRow">
+        <button type="button"><a href="/">Back To Main Menu</a></button>
+        <button type="button"><a href="/createMessage">Create Message</a></button>
+    </div>
+</body>
+</html>
