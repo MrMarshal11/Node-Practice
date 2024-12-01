@@ -1,8 +1,10 @@
+import passport from "passport";
 import model from "../models/queries.js"
 import bcrypt from "bcryptjs";
 
 async function indexRender(req, res) {
     try {
+        // To determine whether or not the sign up href was pressed
         const url = req.path.slice(1) || "login"; // Extract URL path for indexRoute 
         await res.render('index', {url});
     } catch (error) {
@@ -20,11 +22,18 @@ async function postNewUser(req, res) {
         const username = req.body.username;
 
         model.signUpPOST(firstName, lastName, username, hashedPassword);
-        res.redirect("/clubPage"); // try adding /:firstName after you get this working
+        res.redirect("/");
     } catch (error) {
-        console.log(`error at indexRender(), ${error}`);
+        console.log(`error at postNewUser(), ${error}`);
         res.status(500).send('Server side error');
     }
 }
 
-export default {indexRender, postNewUser};
+function verifyLogin(req, res, next) {
+    passport.authenticate("local", {
+        successRedirect: "/clubPage",
+        failureRedirect: "/",
+    })(req, res, next); // Call the returned function
+}
+
+export default {indexRender, postNewUser, verifyLogin};
