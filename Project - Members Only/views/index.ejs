@@ -7,42 +7,7 @@
     <title>Home Page</title>
   </head>
   <body>
-    <div class="loginForm">
-        <h1>Login</h1>
-      <form action="/login" method="POST">
-        <fieldset>
-          <label for="firstName">First Name:</label>
-          <input
-            name="firstName"
-            id="firstName"
-            type="text"
-            placeholder="Jim"
-          />
-        </fieldset>
-        <fieldset>
-          <label for="lastName">Last Name:</label>
-          <input name="lastName" id="lastName" type="text" placeholder="Bo" />
-        </fieldset>
-        <fieldset>
-          <label for="username">Username:</label>
-          <input
-            name="username"
-            id="username"
-            type="text"
-            placeholder="matt@gmail.com"
-          />
-        </fieldset>
-        <fieldset>
-          <label for="password">Password:</label>
-          <input name="password" id="password" type="password" />
-        </fieldset>
-        <fieldset>
-          <label for="confirmPassword">Confirm Password:</label>
-          <input name="confirmPassword" id="confirmPassword" type="password" />
-        </fieldset>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <%- include('partials/loginPage') %>
     <div class="signUp">
       <h4>New to this page? <a href="/signUp">Sign Up Here!</a></h4>
     </div>
