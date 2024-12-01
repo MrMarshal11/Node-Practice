@@ -7,12 +7,16 @@
     <title>Home Page</title>
   </head>
   <body>
-    <%- include('partials/loginPage') %>
-    <div class="signUp">
-      <h4>New to this page? <a href="/signUp">Sign Up Here!</a></h4>
-    </div>
-    <div class="bottomButton">
-      <button type="button"><a href="/clubPage">View Club Page</a></button>
-    </div>
+    <% if (url === "signUp") { %>
+      <%- include('partials/signUpPage') %>
+      <% } else { %>
+      <%- include('partials/loginPage') %>
+      <div class="signUp">
+        <h4>New to this page? <a href="/signUp">Sign Up Here!</a></h4>
+      </div>
+      <div class="bottomButton">
+        <button type="button"><a href="/clubPage">View Club Page</a></button>
+      </div>
+      <% } %>
   </body>
 </html>

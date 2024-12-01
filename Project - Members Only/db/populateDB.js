@@ -17,6 +17,8 @@ const SQL = `CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS messages (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    firstName VARCHAR ( 255 ),
+    lastName VARCHAR ( 255 ),
     title VARCHAR ( 255 ) NOT NULL,
     message TEXT NOT NULL,
     date_added DATE DEFAULT CURRENT_DATE,
@@ -27,8 +29,19 @@ CREATE TABLE IF NOT EXISTS messages (
 INSERT INTO users (firstName, lastName, username, password) VALUES 
     ('Jim', 'Bo', 'jimbo@gmail.com', 'jimbo');
 
-INSERT INTO messages (title, message, date_added, user_id) VALUES 
-    ('Healthy Dinner', 'Got a nice meal today, with some delicious chicken, rice & broccoli!', CURRENT_DATE, 1);
+INSERT INTO messages (firstName, lastName, title, message, date_added, user_id) VALUES 
+    ('Jim', 
+    'Bo', 
+    'Healthy Dinner', 
+    'Got a nice meal today, with some delicious chicken, rice & broccoli!', 
+    CURRENT_DATE, 
+    1), 
+    ('Jak', 
+    'Snow', 
+    'Lost my goose', 
+    'I don''t know what happened but she''s gone and I''m worried...', 
+    CURRENT_DATE, 
+    1);
 `;
 
 async function populateDB() {
