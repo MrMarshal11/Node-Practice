@@ -41,7 +41,7 @@ INSERT INTO messages (firstName, lastName, title, message, date_added, user_id) 
     'Lost my goose', 
     'I don''t know what happened but she''s gone and I''m worried...', 
     CURRENT_DATE, 
-    1);
+    2);
 `;
 
 async function populateDB() {

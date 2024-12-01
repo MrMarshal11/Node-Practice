@@ -1,9 +1,10 @@
 import express from "express";
-import indexRender from "../controllers/indexController.js";
+import indexController from "../controllers/indexController.js";
 
 const indexRouter = express.Router();
 
-indexRouter.get('/', indexRender);
-indexRouter.get('/signUp', indexRender);
+indexRouter.get('/', indexController.indexRender);
+indexRouter.get('/signUp', indexController.indexRender);
+indexRouter.post('/signUp', indexController.postNewUser);
 
 export default indexRouter;

@@ -15,6 +15,15 @@ app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "views"));
 
+// app.use(
+//   session({
+//     secret: "cats",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
+// app.use(passport.session());
+
 //////
 
 app.use("/", indexRouter);
