@@ -146,6 +146,18 @@ a:hover {
     h3:hover {
         background-color: rgb(95, 95, 95);
     }
+    .loggedIn {
+        background-color: green;
+    }
+    .loggedIn:hover {
+        background-color: rgb(0, 196, 0);
+    }
+    .loggedOut {
+        background-color: rgb(146, 71, 0);
+    }
+    .loggedOut:hover {
+        background-color: rgb(206, 99, 0);
+    }
 }
 
 h1 {

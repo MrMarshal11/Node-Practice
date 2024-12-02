@@ -8,12 +8,17 @@
   </head>
   <body>
     <div class="top">
-      <h3>Membership Status: Viewer</h3>
-      <h3>You have to be logged in to see who posted!</h3>
+      <% if (user) { %>
+      <h3 class="loggedIn">Membership Status: Member</h3>
+      <h3 class="loggedIn">Welcome back <%= user.username %></h3>
+      <% } else { %>
+      <h3 class="loggedOut">Membership Status: Viewer</h3>
+      <h3 class="loggedOut">You have to be logged in to see who posted!</h3>
+      <% } %>
     </div>
     <h1>Messages:</h1>
     <div class="messages">
-      <% messages.map((obj) => { %>
+      <% messages.map((obj) => { %> <% if (user) { %>
       <div class="messageDiv">
         <h3>Name: <%= obj.firstname + ' ' + obj.lastname %></h3>
         <h3>Title: <%= obj.title %></h3>
@@ -21,7 +26,13 @@
         <h3>Date: <%= obj.date_added %></h3>
         <button class="deleteButton">Delete</button>
       </div>
-      <% }) %>
+      <% } else { %>
+      <div class="messageDiv">
+        <h3>Title: <%= obj.title %></h3>
+        <h3>Message: <%= obj.message %></h3>
+      </div>
+      <% } %> 
+    <% }) %>
     </div>
     <div class="bottomRow">
       <button type="button"><a href="/">Back To Main Menu</a></button>

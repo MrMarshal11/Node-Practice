@@ -3,7 +3,8 @@ import model from "../models/queries.js"
 async function renderClubPage(req, res) {
     try {
         const messages = await model.getMessages();
-        await res.render('clubPage', {messages});
+        const user = req.user;
+        await res.render('clubPage', {messages, user});
     } catch (error) {
         console.log(`error at renderClubPage(), ${error}`);
     }
