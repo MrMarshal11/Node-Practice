@@ -1,8 +1,9 @@
 import express from "express";
-import renderCreateMessage from "../controllers/createMessageController.js";
+import controller from "../controllers/createMessageController.js";
 
 const createMessageRouter = express.Router();
 
-createMessageRouter.get("/", renderCreateMessage);
+createMessageRouter.get("/", controller.renderCreateMessage);
+createMessageRouter.post("/", controller.createMessage);
 
 export default createMessageRouter

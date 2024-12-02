@@ -29,6 +29,17 @@ async function deleteMessageQuery(id) {
   }
 }
 
+async function createMessageQuery(firstname, lastname, title, message, date_added, user_id) {
+  try {
+    await pool.query("INSERT INTO messages (firstname, lastname, title, message, date_added, user_id) VALUES ($1, $2, $3, $4, $5, $6)", 
+      [firstname, lastname, title, message, date_added, user_id]);
+  } catch (error) {
+    console.log(`error at createMessageQuery(), ${error}`);
+  }
+}
+
+
 export default { getMessages, 
   signUpPOST, 
-  deleteMessageQuery };
+  deleteMessageQuery,
+  createMessageQuery };
