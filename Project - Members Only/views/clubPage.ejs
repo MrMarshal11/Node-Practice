@@ -24,7 +24,12 @@
         <h3>Title: <%= obj.title %></h3>
         <h3>Message: <%= obj.message %></h3>
         <h3>Date: <%= obj.date_added %></h3>
-        <button class="deleteButton">Delete</button>
+
+        <form action="/clubPage/delete" method="POST" style="display:inline;">
+          <input type="hidden" name="id" value="<%= obj.id %>" />
+          <button type="submit" 
+          class="deleteButton">Delete</button>
+        </form>
       </div>
       <% } else { %>
       <div class="messageDiv">

@@ -27,7 +27,9 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 
 INSERT INTO users (firstName, lastName, username, password) VALUES 
-    ('Jim', 'Bo', 'jimbo@gmail.com', 'jimbo');
+    ('Jim', 'Bo', 'jimbo@gmail.com', 'jimbo'),
+    ('Jak', 'Snow', 'jaksnow@gmail.com', 'jaksnow');
+    
 
 INSERT INTO messages (firstName, lastName, title, message, date_added, user_id) VALUES 
     ('Jim', 

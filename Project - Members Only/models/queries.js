@@ -21,4 +21,14 @@ async function signUpPOST(firstName, lastName, username, hashedPassword) {
   }
 }
 
-export default { getMessages, signUpPOST };
+async function deleteMessageQuery(id) {
+  try {
+    await pool.query("Delete FROM messages WHERE id = $1", [id]);
+  } catch (error) {
+    console.log(`error at deleteMessageQuery(), ${error}`);
+  }
+}
+
+export default { getMessages, 
+  signUpPOST, 
+  deleteMessageQuery };
