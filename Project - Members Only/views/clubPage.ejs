@@ -7,15 +7,7 @@
     <title>Club Page</title>
   </head>
   <body>
-    <div class="top">
-      <% if (user) { %>
-      <h3 class="loggedIn">Membership Status: Member</h3>
-      <h3 class="loggedIn">Welcome back <%= user.username %></h3>
-      <% } else { %>
-      <h3 class="loggedOut">Membership Status: Viewer</h3>
-      <h3 class="loggedOut">You have to be logged in to see who posted!</h3>
-      <% } %>
-    </div>
+    <%- include('partials/top') %>
     <h1>Messages:</h1>
     <div class="messages">
       <% messages.map((obj) => { %> <% if (user) { %>
@@ -40,7 +32,7 @@
     <% }) %>
     </div>
     <div class="bottomRow">
-      <button type="button"><a href="/">Back To Main Menu</a></button>
+      <button type="button"><a href="<% if (user) { %> /loggedIn <% } else { %> / <% } %>">Back To Main Menu</a></button>
       <button type="button"><a href="/createMessage">Create Message</a></button>
     </div>
   </body>

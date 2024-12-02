@@ -9,6 +9,8 @@ import bcrypt from "bcryptjs";
 import indexRouter from "./routes/indexRoute.js";
 import clubPageRouter from "./routes/clubPageRoute.js";
 import createMessageRouter from "./routes/createMessageRoute.js";
+import loggedInRouter from "./routes/loggedInRouter.js";
+import { log } from "node:console";
 
 const app = express();
 const port = 8080;
@@ -83,5 +85,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/clubPage", clubPageRouter);
 app.use("/createMessage", createMessageRouter);
+
+app.use("/loggedIn", loggedInRouter);
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}/`));

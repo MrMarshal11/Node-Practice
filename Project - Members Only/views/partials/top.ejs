@@ -1,0 +1,11 @@
+<div class="top">
+  <% if (user) { %>
+  <h3 class="loggedIn">Membership Status: Member</h3>
+  <h3 class="loggedIn">
+    Welcome back <%= user.firstname + ' ' + user.lastname %>
+  </h3>
+  <% } else { %>
+  <h3 class="loggedOut">Membership Status: Viewer</h3>
+  <h3 class="loggedOut">You have to be logged in to see who posted!</h3>
+  <% } %>
+</div>

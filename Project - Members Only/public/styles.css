@@ -134,6 +134,8 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     width: 90vw;
+    position: absolute;
+    top: 0;
     h3 {
         background-color: gray;
         color: white;

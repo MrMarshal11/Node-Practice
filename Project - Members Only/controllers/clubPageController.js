@@ -20,4 +20,17 @@ async function deleteMessage(req, res) {
     }
 }
 
-export default {renderClubPage, deleteMessage};
+async function indexRenderUser(req, res) {
+    try {
+        const user = req.user;
+
+        const url = req.path.slice(1) || "login"; // Extract URL path for indexRoute 
+
+        await res.render('loggedInPage', {user, url});
+    } catch (error) {
+        console.log(`error at indexRenderUser(), ${error}`);
+        res.status(500).send('Server side error');
+    }
+}
+
+export default {renderClubPage, deleteMessage, indexRenderUser};

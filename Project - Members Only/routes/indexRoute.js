@@ -5,6 +5,7 @@ const indexRouter = express.Router();
 
 indexRouter.get('/', indexController.indexRender);
 indexRouter.post('/login', indexController.verifyLogin);
+
 indexRouter.get('/signUp', indexController.indexRender);
 indexRouter.post('/signUp', indexController.postNewUser);
 
