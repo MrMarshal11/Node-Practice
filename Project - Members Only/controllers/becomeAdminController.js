@@ -1,4 +1,7 @@
 import model from "../models/queries.js"
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function renderBecomeAdmin(req, res) {
     try {
@@ -17,11 +20,17 @@ async function renderBecomeAdmin(req, res) {
 
 async function successToAdmin(req, res) {
     try {
-        const user = req.user;
-        const user_id = user.id;
-        await model.becomeAdminQuery(user_id);
+        const guessedPassword = req.body.adminPassword;
 
-        await res.redirect('/clubPage');
+        if (guessedPassword === process.env.ADMIN_PASSWORD) {
+            const user = req.user;
+            const user_id = user.id;
+            await model.becomeAdminQuery(user_id);
+
+            await res.redirect('/clubPage');
+        } else {
+            res.send('wrong password... <a href="/loggedIn">go back to index</a>');
+        }
     } catch (error) {
         console.log(`error at successToAdmin(), ${error}`);
     }
