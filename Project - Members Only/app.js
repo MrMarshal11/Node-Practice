@@ -82,6 +82,15 @@ app.use((req, res, next) => {
 
 ////
 
+app.get("/logOut", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 app.use("/", indexRouter);
 app.use("/clubPage", clubPageRouter);
 app.use("/createMessage", createMessageRouter);

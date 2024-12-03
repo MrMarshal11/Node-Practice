@@ -10,7 +10,10 @@
     <%- include('partials/top') %>
     <h1>Messages:</h1>
     <div class="messages">
-      <% messages.map((obj) => { %> <% if (user.membership_status === 'admin') { %>
+      <% messages.map((obj) => { %> 
+
+        <% if (user) {  %>
+        <% if (user.membership_status === 'admin') { %>
       <div class="messageDiv">
         <h3>Name: <%= obj.firstname + ' ' + obj.lastname %></h3>
         <h3>Title: <%= obj.title %></h3>
@@ -29,6 +32,8 @@
         <h3>Message: <%= obj.message %></h3>
         <h3>Date: <%= obj.date_added %></h3>
       </div>
+      <% } %>
+
       <% } else { %>
       <div class="messageDiv">
         <h3>Title: <%= obj.title %></h3>
