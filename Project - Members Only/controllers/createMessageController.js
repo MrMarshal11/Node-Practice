@@ -12,6 +12,7 @@ async function renderCreateMessage(req, res) {
 async function createMessage(req, res) {
     try {
         const user = req.user;
+        console.log(user);
 
         if (!user) {
             return res.status(401).send("You must be logged in to create a message.");

@@ -165,3 +165,12 @@ a:hover {
 h1 {
     padding-top: 10vh;
 }
+
+.becomeAdmin {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: column;
+    min-height: 40vh;
+    height: auto;
+}

@@ -10,29 +10,38 @@
     <%- include('partials/top') %>
     <h1>Messages:</h1>
     <div class="messages">
-      <% messages.map((obj) => { %> <% if (user) { %>
+      <% messages.map((obj) => { %> <% if (user.membership_status === 'admin') { %>
       <div class="messageDiv">
         <h3>Name: <%= obj.firstname + ' ' + obj.lastname %></h3>
         <h3>Title: <%= obj.title %></h3>
         <h3>Message: <%= obj.message %></h3>
         <h3>Date: <%= obj.date_added %></h3>
 
-        <form action="/clubPage/delete" method="POST" style="display:inline;">
+        <form action="/clubPage/delete" method="POST" style="display: inline">
           <input type="hidden" name="id" value="<%= obj.id %>" />
-          <button type="submit" 
-          class="deleteButton">Delete</button>
+          <button type="submit" class="deleteButton">Delete</button>
         </form>
+      </div>
+      <% } else if (user.membership_status === 'member') { %>
+      <div class="messageDiv">
+        <h3>Name: <%= obj.firstname + ' ' + obj.lastname %></h3>
+        <h3>Title: <%= obj.title %></h3>
+        <h3>Message: <%= obj.message %></h3>
+        <h3>Date: <%= obj.date_added %></h3>
       </div>
       <% } else { %>
       <div class="messageDiv">
         <h3>Title: <%= obj.title %></h3>
         <h3>Message: <%= obj.message %></h3>
       </div>
-      <% } %> 
-    <% }) %>
+      <% } %> <% }) %>
     </div>
     <div class="bottomRow">
-      <button type="button"><a href="<% if (user) { %> /loggedIn <% } else { %> / <% } %>">Back To Main Menu</a></button>
+      <button type="button">
+        <a href="<% if (user) { %> /loggedIn <% } else { %> / <% } %>"
+          >Back To Main Menu</a
+        >
+      </button>
       <button type="button"><a href="/createMessage">Create Message</a></button>
     </div>
   </body>

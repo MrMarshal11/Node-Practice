@@ -1,6 +1,6 @@
 <div class="top">
   <% if (user) { %>
-  <h3 class="loggedIn">Membership Status: Member</h3>
+  <h3 class="loggedIn">Membership Status: <%= user.membership_status %></h3>
   <h3 class="loggedIn">
     Welcome back <%= user.firstname + ' ' + user.lastname %>
   </h3>

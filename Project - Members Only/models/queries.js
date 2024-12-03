@@ -13,8 +13,8 @@ async function getMessages() {
 async function signUpPOST(firstName, lastName, username, hashedPassword) {
   try {
     await pool.query(
-      "INSERT INTO users (firstName, lastName, username, password) VALUES ($1, $2, $3, $4)",
-      [firstName, lastName, username, hashedPassword]
+      "INSERT INTO users (firstName, lastName, username, password, membership_status) VALUES ($1, $2, $3, $4, $5)",
+      [firstName, lastName, username, hashedPassword, 'member']
     );
   } catch (error) {
     console.log(`error at signUpPOST(), ${error}`);
@@ -38,8 +38,17 @@ async function createMessageQuery(firstname, lastname, title, message, date_adde
   }
 }
 
+async function becomeAdminQuery(user_id) {
+  try {
+    await pool.query("UPDATE users SET membership_status = 'admin' WHERE id = $1", [user_id])
+  } catch (error) {
+    console.log(`error at becomeAdminQuery(), ${error}`)
+  }
+}
+
 
 export default { getMessages, 
   signUpPOST, 
   deleteMessageQuery,
-  createMessageQuery };
+  createMessageQuery,
+  becomeAdminQuery };

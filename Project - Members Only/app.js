@@ -10,7 +10,7 @@ import indexRouter from "./routes/indexRoute.js";
 import clubPageRouter from "./routes/clubPageRoute.js";
 import createMessageRouter from "./routes/createMessageRoute.js";
 import loggedInRouter from "./routes/loggedInRouter.js";
-import { log } from "node:console";
+import becomeAdminRouter from "./routes/becomeAdminRoute.js";
 
 const app = express();
 const port = 8080;
@@ -87,5 +87,6 @@ app.use("/clubPage", clubPageRouter);
 app.use("/createMessage", createMessageRouter);
 
 app.use("/loggedIn", loggedInRouter);
+app.use("/becomeAdmin", becomeAdminRouter);
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}/`));

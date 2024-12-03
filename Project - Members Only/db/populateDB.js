@@ -12,7 +12,8 @@ const SQL = `CREATE TABLE IF NOT EXISTS users (
     firstName VARCHAR ( 255 ),
     lastName VARCHAR ( 255 ),
     username VARCHAR ( 255 ) UNIQUE NOT NULL,
-    password VARCHAR ( 255 ) NOT NULL
+    password VARCHAR ( 255 ) NOT NULL,
+    membership_status VARCHAR ( 255 ) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS messages (
@@ -26,9 +27,9 @@ CREATE TABLE IF NOT EXISTS messages (
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
-INSERT INTO users (firstName, lastName, username, password) VALUES 
-    ('Jim', 'Bo', 'jimbo@gmail.com', 'jimbo'),
-    ('Jak', 'Snow', 'jaksnow@gmail.com', 'jaksnow');
+INSERT INTO users (firstName, lastName, username, password, membership_status) VALUES 
+    ('Jim', 'Bo', 'jimbo@gmail.com', 'jimbo', 'member'),
+    ('Jak', 'Snow', 'jaksnow@gmail.com', 'jaksnow', 'admin');
     
 
 INSERT INTO messages (firstName, lastName, title, message, date_added, user_id) VALUES 

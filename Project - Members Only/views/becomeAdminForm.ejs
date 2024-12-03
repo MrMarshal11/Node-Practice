@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become Admin?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <%- include('partials/top') %>
+    <form action="/becomeAdmin" method="POST" class="becomeAdmin">
+      <h2>Guess the password to become admin</h2>
+      <fieldset>
+        <label for="adminPassword"
+          >What's the password? Hint, it's obvious.</label
+        >
+        <input name="adminPassword" id="adminPassword" type="text" />
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
