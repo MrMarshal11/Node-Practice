@@ -16,13 +16,21 @@ async function indexRender(req, res) {
 // Collect sign up details, then redirect to club page;
 async function postNewUser(req, res) {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
-        const username = req.body.username;
+        const password = req.body.password;
+        const confirmPassword = req.body.confirmPassword;
 
-        model.signUpPOST(firstName, lastName, username, hashedPassword);
-        res.redirect("/");
+        if (password === confirmPassword) {
+            const hashedPassword = await bcrypt.hash(req.body.password, 10);
+            const firstName = req.body.firstName;
+            const lastName = req.body.lastName;
+            const username = req.body.username;
+    
+            model.signUpPOST(firstName, lastName, username, hashedPassword);
+            res.redirect("/");
+        } else {
+            console.log('passwords do not match');
+            res.redirect("/signUp");
+        }
     } catch (error) {
         console.log(`error at postNewUser(), ${error}`);
         res.status(500).send('Server side error');

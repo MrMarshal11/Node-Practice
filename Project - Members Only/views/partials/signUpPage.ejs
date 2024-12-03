@@ -3,11 +3,11 @@
   <form action="/signUp" method="POST" class="postForm">
     <fieldset>
       <label for="firstName">First Name:</label>
-      <input name="firstName" id="firstName" type="text" placeholder="Jim" />
+      <input name="firstName" id="firstName" type="text" placeholder="Jim" required/>
     </fieldset>
     <fieldset>
       <label for="lastName">Last Name:</label>
-      <input name="lastName" id="lastName" type="text" placeholder="Bo" />
+      <input name="lastName" id="lastName" type="text" placeholder="Bo" required/>
     </fieldset>
     <fieldset>
       <label for="username">Username:</label>
@@ -16,15 +16,16 @@
         id="username"
         type="email"
         placeholder="matt@gmail.com"
+        required
       />
     </fieldset>
     <fieldset>
       <label for="password">Password:</label>
-      <input name="password" id="password" type="password" />
+      <input name="password" id="password" type="password" required/>
     </fieldset>
     <fieldset>
       <label for="confirmPassword">Confirm Password:</label>
-      <input name="confirmPassword" id="confirmPassword" type="password" />
+      <input name="confirmPassword" id="confirmPassword" type="password" required/>
     </fieldset>
     <button type="submit">Submit</button>
   </form>
