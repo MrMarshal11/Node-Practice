@@ -2,7 +2,7 @@ import prisma from "./prisma.js";
 
 async function createUserQuery(username, password) {
   try {
-    prisma.users.create({
+    const newUser = await prisma.users.create({
       data: {
         username: username,
         password: password,

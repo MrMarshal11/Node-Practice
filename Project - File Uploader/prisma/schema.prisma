@@ -16,8 +16,8 @@ model users {
 
 model Session {
   sid       String   @id @default(cuid())
-  userId    Int
-  user      users    @relation(fields: [userId], references: [id])
+  userId    Int?
+  user      users?   @relation(fields: [userId], references: [id])
   expiresAt DateTime
   data      String
 }

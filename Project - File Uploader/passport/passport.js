@@ -13,10 +13,11 @@ function usePassport(app) {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
-        const { rows } = await pool.query(
-          "SELECT * FROM users WHERE username = $1",
-          [username]
-        );
+        const { rows } = await prisma.users.findUnique({
+          where: {
+            username: username,
+          },
+        });
         const user = rows[0];
 
         if (!user) {
@@ -42,10 +43,12 @@ function usePassport(app) {
 
   passport.deserializeUser(async (id, done) => {
     try {
-      const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [
-        id,
-      ]);
-      const user = rows[0];
+      const userId = parseInt(id, 10); // Ensure id is an integer
+      const user = await prisma.users.findUnique({
+        where: {
+          id: userId,
+        },
+      });
 
       done(null, user);
     } catch (err) {
@@ -59,12 +62,11 @@ function usePassport(app) {
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       },
       secret: process.env.SECRET, // Replace with a strong secret in production
-      resave: true,
-      saveUninitialized: true,
+      resave: false,
+      saveUninitialized: false,
       store: new PrismaSessionStore(prisma, {
         checkPeriod: 2 * 60 * 1000, // Remove expired sessions every 2 minutes
         dbRecordIdIsSessionId: true, // Use the session ID as the record ID
-        dbRecordIdFunction: undefined, // Optional custom session ID generator
       }),
     })
   );
