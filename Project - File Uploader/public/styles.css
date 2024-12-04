@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 10px;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  background-image: radial-gradient(rgb(0, 60, 255), rgb(0, 162, 255));
+  color: white;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: gray;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 1000;
+}
+a:hover {
+  cursor: pointer;
+  color: rgb(143, 240, 130);
+}

@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <%- include('partials/navBar') %>
+    <%- include('partials/navBar') %> <% if (page === "login") {%>
+    <div class="mainBody"><%- include('partials/login') %></div>
+    <% } else if (page === "signUp") { %>
+    <div class="mainBody"><%- include('partials/signUp') %></div>
+    <% } else if (page === "home") { %>
     <div class="mainBody">
       <h1>Welcome to the home page</h1>
     </div>
+    <% } %>
   </body>
 </html>
