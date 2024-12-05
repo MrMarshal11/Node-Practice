@@ -1,4 +1,5 @@
 import express from "express";
+import upload from "../multer/multer.js";
 import controller from "../controllers/indexController.js";
 
 const indexRouter = express.Router();
@@ -10,6 +11,11 @@ indexRouter.get("/uploadFile", controller.renderUploadFile);
 
 indexRouter.post("/login", controller.verifyLogin);
 indexRouter.post("/signUp", controller.signUpComplete);
-indexRouter.post("/uploadFile", controller.postUploadedFiles);
+
+indexRouter.post(
+  "/uploadFile",
+  upload.single("uploaded_file"),
+  controller.postUploadedFiles
+);
 
 export default indexRouter;

@@ -1,9 +1,14 @@
 <div class="uploadFileForm">
   <h1>Login</h1>
-  <form action="/uploadFile" method="POST" class="postForm">
+  <form
+    action="/uploadFile"
+    method="POST"
+    class="postForm"
+    enctype="multipart/form-data"
+  >
     <fieldset>
-      <label for="file">Upload Your Files:</label>
-      <input name="file" id="file" type="file" multiple />
+      <label for="uploaded_file">Upload Your File:</label>
+      <input name="uploaded_file" id="uploaded_file" type="file" />
     </fieldset>
     <button type="submit">Submit</button>
   </form>

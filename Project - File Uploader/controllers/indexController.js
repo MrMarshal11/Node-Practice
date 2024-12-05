@@ -27,13 +27,14 @@ async function renderUploadFile(req, res) {
 
 async function postUploadedFiles(req, res) {
   try {
-    const file = req.body.file;
+    const file = JSON.stringify(req.file);
+
     console.log(`file collected: ${file}`); // for debugging
 
     // model to store the uploaded files somewhere
     await res.redirect("/");
   } catch (error) {
-    console.log(`error at renderUploadFile(), ${error}`);
+    console.log(`error at postUploadedFiles(), ${error}`);
   }
 }
 
