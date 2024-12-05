@@ -11,10 +11,14 @@
     <div class="mainBody"><%- include('partials/login') %></div>
     <% } else if (page === "signUp") { %>
     <div class="mainBody"><%- include('partials/signUp') %></div>
-    <% } else if (page === "home") { %>
+    <% } else if (page === "home") { %> <% if (!user) { %>
     <div class="mainBody">
-      <h1>Welcome to the home page</h1>
+      <h1>Welcome to the home page, become a user and see what happens.</h1>
     </div>
-    <% } %>
+    <% } else { %>
+    <div class="mainBody">
+      <h1>Welcome to the home page, <%= user.fullname %></h1>
+    </div>
+    <% } %> <% } %>
   </body>
 </html>

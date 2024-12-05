@@ -13,12 +13,13 @@ function usePassport(app) {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
-        const { rows } = await prisma.users.findUnique({
+        console.log("Logging in user:", username); // Log the username
+        const user = await prisma.users.findUnique({
           where: {
             username: username,
           },
         });
-        const user = rows[0];
+        console.log("User found:", user);
 
         if (!user) {
           return done(null, false, { message: "Incorrect username" });
@@ -56,6 +57,10 @@ function usePassport(app) {
     }
   });
 
+  // Note, to make this work, we had to manually delete
+  // ""id: this.dbRecordIdIsSessionId ? sid : this.dbRecordIdFunction(sid),""
+  // from ""                    case 5: return [4 /*yield*/, this.prisma[this.sessionModelName].create({data: __assign(__assign({}, data), { id: this.dbRecordIdIsSessionId ? sid : this.dbRecordIdFunction(sid), data: sessionString }),})];""
+  // Located in theprismalibrary.../@quixo3.../prisma-session-store.js
   app.use(
     session({
       cookie: {
@@ -67,6 +72,7 @@ function usePassport(app) {
       store: new PrismaSessionStore(prisma, {
         checkPeriod: 2 * 60 * 1000, // Remove expired sessions every 2 minutes
         dbRecordIdIsSessionId: true, // Use the session ID as the record ID
+        modelName: "Session", // Explicitly specify the session model
       }),
     })
   );

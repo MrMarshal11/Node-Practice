@@ -1,10 +1,16 @@
 import model from "../prisma/queries.js";
 import bcrypt from "bcryptjs";
+import passport from "passport";
 
 async function renderIndex(req, res) {
   try {
-    // await model.createUserQuery("greg2", "greg2'sPassword"); // just a demo of adding the user to the db
-    await res.render("index", { page: "home" });
+    const user = req.user;
+
+    if (!user) {
+      await res.render("index", { page: "home", user: null });
+    } else {
+      await res.render("index", { page: "home", user });
+    }
   } catch (error) {
     console.log(`error at renderIndex(), ${error}`);
   }
@@ -28,13 +34,12 @@ async function renderSignUp(req, res) {
   }
 }
 
-// async function renderLogin(req, res) {
-//   try {
-//     await res.render("index", { page: "login" });
-//   } catch (error) {
-//     console.log(`error at renderLogin(), ${error}`);
-//   }
-// }
+function verifyLogin(req, res, next) {
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  })(req, res, next); // Call the returned function
+}
 
 async function signUpComplete(req, res) {
   try {
@@ -57,4 +62,10 @@ async function signUpComplete(req, res) {
   }
 }
 
-export default { renderIndex, renderLogin, renderSignUp, signUpComplete };
+export default {
+  renderIndex,
+  renderLogin,
+  renderSignUp,
+  signUpComplete,
+  verifyLogin,
+};
