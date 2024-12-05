@@ -45,3 +45,7 @@ a:hover {
   cursor: pointer;
   color: rgb(143, 240, 130);
 }
+
+button {
+  background-color: gray;
+}

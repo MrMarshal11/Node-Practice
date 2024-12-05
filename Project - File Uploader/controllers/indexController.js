@@ -16,6 +16,27 @@ async function renderIndex(req, res) {
   }
 }
 
+async function renderUploadFile(req, res) {
+  try {
+    const user = req.user;
+    await res.render("index", { page: "uploadFile", user });
+  } catch (error) {
+    console.log(`error at renderUploadFile(), ${error}`);
+  }
+}
+
+async function postUploadedFiles(req, res) {
+  try {
+    const file = req.body.file;
+    console.log(`file collected: ${file}`); // for debugging
+
+    // model to store the uploaded files somewhere
+    await res.redirect("/");
+  } catch (error) {
+    console.log(`error at renderUploadFile(), ${error}`);
+  }
+}
+
 // Login & Sign Up functionalities below:
 
 async function renderLogin(req, res) {
@@ -68,4 +89,6 @@ export default {
   renderSignUp,
   signUpComplete,
   verifyLogin,
+  renderUploadFile,
+  postUploadedFiles,
 };
