@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <%- include('partials/navBar') %> <% if (page === "login") {%>
+    <% if (page === "login") {%> <%- include('partials/navBar') %>
     <div class="mainBody"><%- include('partials/login') %></div>
-    <% } else if (page === "signUp") { %>
+    <% } else if (page === "signUp") { %> <%- include('partials/navBar') %>
     <div class="mainBody"><%- include('partials/signUp') %></div>
-    <% } else if (page === "home") { %> <% if (!user) { %>
+    <% } else if (page === "home") { %> <% if (!user) { %> <%-
+    include('partials/navBar') %>
     <div class="mainBody">
       <h1>Welcome to the home page, become a user and see what happens.</h1>
     </div>
-    <% } else { %>
+    <% } else { %> <%- include('partials/navBarSignedIn') %>
     <div class="mainBody">
       <h1>Welcome to the home page, <%= user.fullname %></h1>
     </div>
