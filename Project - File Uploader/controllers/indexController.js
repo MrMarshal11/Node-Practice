@@ -42,7 +42,9 @@ async function postUploadedFiles(req, res) {
 
 async function renderNewFolderForm(req, res) {
   try {
-    await res.render("index", { page: "newFolderForm" });
+    const user = req.user;
+
+    await res.render("index", { page: "newFolderForm", user });
   } catch (error) {
     console.log(`error at renderNewFolderForm(), ${error}`);
   }
@@ -50,8 +52,12 @@ async function renderNewFolderForm(req, res) {
 
 async function sendNewFolderToDB(req, res) {
   try {
-    // const folderName = req.body.newFolder;
-    // model to push the new folder to the database.
+    const name = req.body.newFolder;
+    const user = req.user;
+    const userId = user.id;
+
+    await model.createFolderQuery(userId, name);
+
     await res.redirect("/");
   } catch (error) {
     console.log(`error at sendNewFolderToDB(), ${error}`);

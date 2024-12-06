@@ -14,6 +14,19 @@ async function createUserQuery(fullname, username, hashedPassword) {
   }
 }
 
+async function createFolderQuery(userId, name) {
+  try {
+    const newFolder = await prisma.folders.create({
+      data: {
+        userId: userId,
+        name: name,
+      },
+    });
+  } catch (error) {
+    console.log(`error at createFolderQuery(), ${error}`);
+  }
+}
+
 async function createFileQuery(filename, filepath, mimetype, size) {
   try {
     const fileRecord = await prisma.file.create({
@@ -29,4 +42,4 @@ async function createFileQuery(filename, filepath, mimetype, size) {
   }
 }
 
-export default { createUserQuery, createFileQuery };
+export default { createUserQuery, createFileQuery, createFolderQuery };
