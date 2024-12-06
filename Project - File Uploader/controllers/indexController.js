@@ -90,6 +90,19 @@ async function deleteFile(req, res) {
   }
 }
 
+async function deleteFolder(req, res) {
+  try {
+    const folderName = req.body.folderName;
+
+    await model.deleteFolderQuery(folderName);
+    console.log(`folder: ${folderName} successfully deleted from database.`);
+
+    await res.redirect(`/`);
+  } catch (error) {
+    console.log(`error at deleteFolder(), ${error}`);
+  }
+}
+
 async function renderNewFolderForm(req, res) {
   try {
     const user = req.user;
@@ -172,4 +185,5 @@ export default {
   sendNewFolderToDB,
   renderSpecificFolder,
   deleteFile,
+  deleteFolder,
 };

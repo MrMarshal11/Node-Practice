@@ -34,6 +34,10 @@
       <button>
         <a href="/folder/<%= folder.name %>"><%= folder.name %></a>
       </button>
+      <form action="/delete" method="POST" style="display: inline">
+        <input type="hidden" name="folderName" value="<%= folder.name %>" />
+        <button type="submit" class="deleteButton">Delete</button>
+      </form>
       <% }) %>
     </div>
     <% } %> <% } %> <% } %>

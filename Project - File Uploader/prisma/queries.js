@@ -99,6 +99,18 @@ async function deleteFileQuery(fileId) {
   }
 }
 
+async function deleteFolderQuery(folderName) {
+  try {
+    const files = await prisma.folders.delete({
+      where: {
+        name: folderName,
+      },
+    });
+  } catch (error) {
+    console.log(`error at deleteFolderQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   createFileQuery,
@@ -107,4 +119,5 @@ export default {
   readFolderFromNameQuery,
   readFilesQuery,
   deleteFileQuery,
+  deleteFolderQuery,
 };
