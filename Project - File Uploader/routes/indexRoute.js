@@ -16,7 +16,7 @@ indexRouter.post("/signUp", controller.signUpComplete);
 indexRouter.post("/newFolder", controller.sendNewFolderToDB);
 
 indexRouter.post(
-  "/uploadFile",
+  "/folder/:folderName/uploadFile",
   upload.single("uploaded_file"),
   controller.postUploadedFiles
 );

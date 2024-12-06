@@ -22,8 +22,9 @@ async function renderIndex(req, res) {
 async function renderUploadFile(req, res) {
   try {
     const user = req.user;
+    const folderName = req.params.folderName;
 
-    await res.render("index", { page: "uploadFile", user });
+    await res.render("index", { page: "uploadFile", user, folderName });
   } catch (error) {
     console.log(`error at renderUploadFile(), ${error}`);
   }
@@ -44,9 +45,18 @@ async function renderSpecificFolder(req, res) {
 async function postUploadedFiles(req, res) {
   try {
     const { filename, path: filepath, mimetype, size } = req.file;
-    // have to include folderId, i think relate it to the path or params
+    const folderName = req.params.folderName;
+    console.log(folderName);
 
-    await model.createFileQuery(filename, filepath, mimetype, size);
+    const folder = await model.readFolderFromNameQuery(folderName);
+
+    console.log(folder);
+
+    const folderId = folder.id;
+
+    console.log(folderId);
+
+    await model.createFileQuery(filename, filepath, mimetype, size, folderId);
 
     console.log(`file collected: ${filename}`); // for debugging
     await res.redirect("/");

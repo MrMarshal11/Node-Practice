@@ -27,7 +27,7 @@ async function createFolderQuery(userId, name) {
   }
 }
 
-async function createFileQuery(filename, filepath, mimetype, size) {
+async function createFileQuery(filename, filepath, mimetype, size, folderId) {
   try {
     const fileRecord = await prisma.file.create({
       data: {
@@ -35,6 +35,7 @@ async function createFileQuery(filename, filepath, mimetype, size) {
         filepath: filepath,
         mimetype: mimetype,
         size: size,
+        folderId: folderId,
       },
     });
   } catch {
@@ -55,6 +56,20 @@ async function readFolderQuery(user) {
     return newFolder;
   } catch (error) {
     console.log(`error at readFolderQuery(), ${error}`);
+  }
+}
+
+async function readFolderFromNameQuery(folderName) {
+  try {
+    const folder = await prisma.folders.findUnique({
+      where: {
+        name: folderName,
+      },
+    });
+
+    return folder;
+  } catch (error) {
+    console.log(`error at readFolderFromNameQuery(), ${error}`);
   }
 }
 
@@ -80,4 +95,5 @@ export default {
   createFileQuery,
   createFolderQuery,
   readFolderQuery,
+  readFolderFromNameQuery,
 };
