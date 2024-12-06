@@ -28,6 +28,16 @@ async function renderUploadFile(req, res) {
   }
 }
 
+async function renderSpecificFolder(req, res) {
+  try {
+    const user = req.user;
+    // model to get content from folder
+    await res.render("specificFolder", { user });
+  } catch (error) {
+    console.log(`error at renderSpecificFolder(), ${error}`);
+  }
+}
+
 async function postUploadedFiles(req, res) {
   try {
     const { filename, path: filepath, mimetype, size } = req.file;
@@ -121,4 +131,5 @@ export default {
   postUploadedFiles,
   renderNewFolderForm,
   sendNewFolderToDB,
+  renderSpecificFolder,
 };
