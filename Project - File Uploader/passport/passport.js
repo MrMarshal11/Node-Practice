@@ -19,7 +19,6 @@ function usePassport(app) {
             username: username,
           },
         });
-        console.log("User found:", user);
 
         if (!user) {
           return done(null, false, { message: "Incorrect username" });

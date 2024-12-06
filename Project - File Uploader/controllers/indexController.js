@@ -43,7 +43,7 @@ async function renderSpecificFolder(req, res) {
     const files = await model.readFilesQuery(folderId);
     console.log(files);
 
-    await res.render("specificFolder", { user, folderName, files });
+    await res.render("specificFolder", { user, folderName, files, page: null });
   } catch (error) {
     console.log(`error at renderSpecificFolder(), ${error}`);
   }
@@ -127,6 +127,17 @@ async function sendNewFolderToDB(req, res) {
   }
 }
 
+async function renderFileStats(req, res) {
+  try {
+    const filename = req.params.fileName;
+    const file = await model.readFileByName(filename);
+
+    await res.render("specificFolder", { page: "stats", file });
+  } catch (error) {
+    console.log(`error at renderFileStats(), ${error}`);
+  }
+}
+
 // Login & Sign Up functionalities below:
 
 async function renderLogin(req, res) {
@@ -186,4 +197,5 @@ export default {
   renderSpecificFolder,
   deleteFile,
   deleteFolder,
+  renderFileStats,
 };

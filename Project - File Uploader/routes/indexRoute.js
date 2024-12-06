@@ -10,6 +10,10 @@ indexRouter.get("/signUp", controller.renderSignUp);
 indexRouter.get("/newFolder", controller.renderNewFolderForm);
 indexRouter.get("/folder/:folderName/uploadFile", controller.renderUploadFile);
 indexRouter.get("/folder/:folderName", controller.renderSpecificFolder);
+indexRouter.get(
+  "/folder/:folderName/:fileName/stats",
+  controller.renderFileStats
+);
 
 indexRouter.post("/login", controller.verifyLogin);
 indexRouter.post("/signUp", controller.signUpComplete);

@@ -111,6 +111,20 @@ async function deleteFolderQuery(folderName) {
   }
 }
 
+async function readFileByName(fileName) {
+  try {
+    const file = await prisma.file.findFirst({
+      where: {
+        filename: fileName,
+      },
+    });
+
+    return file;
+  } catch (error) {
+    console.log(`error at readFileByName(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   createFileQuery,
@@ -120,4 +134,5 @@ export default {
   readFilesQuery,
   deleteFileQuery,
   deleteFolderQuery,
+  readFileByName,
 };

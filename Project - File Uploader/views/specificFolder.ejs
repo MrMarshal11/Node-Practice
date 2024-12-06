@@ -8,6 +8,16 @@
   </head>
   <body>
       <%- include('partials/navBarSignedIn') %>
+      <% if (page === 'stats') { %>
+        <div class="mainBody">
+              <div class="fileStats">
+                <h1>File Stats Below</h1>
+                <h3>File Name: <%= file.filename %></h3>
+                <h3>File Size: <%= file.size %></h3>
+                <h3>File Created: <%= file.uploadedAt %></h3>
+              </div>
+        </div>
+      <% } else { %>
       <div class="mainBody">
         <button><a href="/folder/<%= folderName %>/uploadFile">Upload new files?</a></button>
         <div>
@@ -15,6 +25,7 @@
           <% files.map(file => { %>
             <h3>File Uploaded:</h3>
             <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
+            <button type="button"><a href="/folder/<%= folderName %>/<%= file.filename %>/stats">File Stats</a></button>
             <form action="/folder/<%= folderName %>/delete" method="POST" style="display: inline">
               <input type="hidden" name="fileId" value="<%= file.id %>" />
               <input type="hidden" name="filePath" value="/<%= file.filepath.replace(/\\/g, '/') %>" />
@@ -22,5 +33,6 @@
             </form>
             <% }) %>
       </div>
+      <% } %>
   </body>
 </html>
