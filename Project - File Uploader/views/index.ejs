@@ -11,6 +11,9 @@
     <div class="mainBody"><%- include('partials/login') %></div>
     <% } else if (page === "signUp") { %> <%- include('partials/navBar') %>
     <div class="mainBody"><%- include('partials/signUp') %></div>
+    <% } else if (page === "newFolderForm") { %> <%-
+    include('partials/navBarSignedIn')%>
+    <div class="mainBody"><%- include('partials/newFolder') %></div>
     <% } else if (page === "uploadFile") { %> <%-
     include('partials/navBarSignedIn') %>
     <div class="mainBody"><%- include('partials/uploadFile') %></div>
@@ -23,6 +26,7 @@
     <div class="mainBody">
       <h1>Welcome to the home page, <%= user.fullname %></h1>
       <button><a href="/uploadFile">Upload new files?</a></button>
+      <button><a href="/newFolder">Make New Folder?</a></button>
     </div>
     <% } %> <% } %>
   </body>

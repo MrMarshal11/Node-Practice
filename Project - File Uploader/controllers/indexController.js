@@ -16,6 +16,8 @@ async function renderIndex(req, res) {
   }
 }
 
+// Files & Folders below
+
 async function renderUploadFile(req, res) {
   try {
     const user = req.user;
@@ -27,14 +29,32 @@ async function renderUploadFile(req, res) {
 
 async function postUploadedFiles(req, res) {
   try {
-    const file = JSON.stringify(req.file);
+    const { filename, path: filepath, mimetype, size } = req.file;
 
-    console.log(`file collected: ${file}`); // for debugging
+    await model.createFileQuery(filename, filepath, mimetype, size);
 
-    // model to store the uploaded files somewhere
+    console.log(`file collected: ${filename}`); // for debugging
     await res.redirect("/");
   } catch (error) {
     console.log(`error at postUploadedFiles(), ${error}`);
+  }
+}
+
+async function renderNewFolderForm(req, res) {
+  try {
+    await res.render("index", { page: "newFolderForm" });
+  } catch (error) {
+    console.log(`error at renderNewFolderForm(), ${error}`);
+  }
+}
+
+async function sendNewFolderToDB(req, res) {
+  try {
+    // const folderName = req.body.newFolder;
+    // model to push the new folder to the database.
+    await res.redirect("/");
+  } catch (error) {
+    console.log(`error at sendNewFolderToDB(), ${error}`);
   }
 }
 
@@ -92,4 +112,6 @@ export default {
   verifyLogin,
   renderUploadFile,
   postUploadedFiles,
+  renderNewFolderForm,
+  sendNewFolderToDB,
 };

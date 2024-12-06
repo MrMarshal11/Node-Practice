@@ -13,6 +13,7 @@ model users {
   username String    @unique
   password String
   sessions Session[]
+  folders  folders[]
 }
 
 model Session {
@@ -21,4 +22,23 @@ model Session {
   user      users?   @relation(fields: [userId], references: [id])
   expiresAt DateTime
   data      String
+}
+
+model folders {
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  userId Int
+  user   users  @relation(fields: [userId], references: [id])
+  // files  file[]
+}
+
+model file {
+  id         Int      @id @default(autoincrement())
+  filename   String
+  filepath   String
+  mimetype   String
+  size       Int
+  uploadedAt DateTime @default(now())
+  // folderId   Int
+  // folder     folders  @relation(fields: [folderId], references: [id])
 }

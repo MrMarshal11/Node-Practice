@@ -14,4 +14,19 @@ async function createUserQuery(fullname, username, hashedPassword) {
   }
 }
 
-export default { createUserQuery };
+async function createFileQuery(filename, filepath, mimetype, size) {
+  try {
+    const fileRecord = await prisma.file.create({
+      data: {
+        filename: filename,
+        filepath: filepath,
+        mimetype: mimetype,
+        size: size,
+      },
+    });
+  } catch {
+    console.log(`error at createFileQuery(), ${error}`);
+  }
+}
+
+export default { createUserQuery, createFileQuery };
