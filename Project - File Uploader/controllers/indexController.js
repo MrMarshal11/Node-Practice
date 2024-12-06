@@ -35,8 +35,13 @@ async function renderSpecificFolder(req, res) {
     const user = req.user;
     const folderName = req.params.folderName;
 
-    // model to get content from folder
-    await res.render("specificFolder", { user, folderName });
+    const folder = await model.readFolderFromNameQuery(folderName);
+    const folderId = folder.id;
+
+    const files = await model.readFilesQuery(folderId);
+    console.log(files);
+
+    await res.render("specificFolder", { user, folderName, files });
   } catch (error) {
     console.log(`error at renderSpecificFolder(), ${error}`);
   }

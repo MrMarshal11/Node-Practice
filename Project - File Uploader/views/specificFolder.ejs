@@ -8,11 +8,15 @@
   </head>
   <body>
       <%- include('partials/navBarSignedIn') %>
-      <button><a href="/folder/<%= folderName %>/uploadFile">Upload new files?</a></button>
       <div class="mainBody">
-        <!-- map the files in the respective folder, but for now before changing the schema just show this -->
+        <button><a href="/folder/<%= folderName %>/uploadFile">Upload new files?</a></button>
+        <!-- map the files in the respective folder, but for now before changing the schema just show this  -->
         <div>
-          <h3>Files:</h3>
+          <h2>Files:</h2>
+          <% files.map(file => { %>
+            <h3>File Uploaded:</h3>
+            <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
+          <% }) %>
       </div>
   </body>
 </html>

@@ -13,7 +13,7 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "views"));
-
+app.use("/multer/uploads", express.static("multer/uploads"));
 
 usePassport(app);
 
