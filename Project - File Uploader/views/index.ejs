@@ -28,6 +28,13 @@
       <button><a href="/uploadFile">Upload new files?</a></button>
       <button><a href="/newFolder">Make New Folder?</a></button>
     </div>
-    <% } %> <% } %>
+    <% if (folders) { %>
+    <div>
+      <h3>Folders:</h3>
+      <% folders.map(folder => { %>
+      <button><a href="<%= folder.name %>"><%= folder.name %></a></button>
+      <% }) %>
+    </div>
+    <% } %> <% } %> <% } %>
   </body>
 </html>

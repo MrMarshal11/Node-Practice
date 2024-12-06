@@ -9,7 +9,8 @@ async function renderIndex(req, res) {
     if (!user) {
       await res.render("index", { page: "home", user: null });
     } else {
-      await res.render("index", { page: "home", user });
+      const folders = await model.readFolderQuery(user);
+      await res.render("index", { page: "home", user, folders });
     }
   } catch (error) {
     console.log(`error at renderIndex(), ${error}`);

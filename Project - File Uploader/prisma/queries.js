@@ -42,4 +42,25 @@ async function createFileQuery(filename, filepath, mimetype, size) {
   }
 }
 
-export default { createUserQuery, createFileQuery, createFolderQuery };
+async function readFolderQuery(user) {
+  try {
+    const userId = user.id;
+
+    const newFolder = await prisma.folders.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return newFolder;
+  } catch (error) {
+    console.log(`error at readFolderQuery(), ${error}`);
+  }
+}
+
+export default {
+  createUserQuery,
+  createFileQuery,
+  createFolderQuery,
+  readFolderQuery,
+};
