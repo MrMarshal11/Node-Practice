@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <% if (page === "login") {%> <%- include('partials/navBar') %>
@@ -25,7 +25,6 @@
     <% } else { %> <%- include('partials/navBarSignedIn') %>
     <div class="mainBody">
       <h1>Welcome to the home page, <%= user.fullname %></h1>
-      <button><a href="/uploadFile">Upload new files?</a></button>
       <button><a href="/newFolder">Make New Folder?</a></button>
     </div>
     <% if (folders.length !== 0) { %>

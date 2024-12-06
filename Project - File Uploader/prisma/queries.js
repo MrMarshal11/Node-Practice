@@ -58,6 +58,23 @@ async function readFolderQuery(user) {
   }
 }
 
+// async function readFilesQuery(user) {
+//   try {
+//  // unfinished btw
+//     const userId = user.id;
+
+//     const newFolder = await prisma.file.findMany({
+//       where: {
+//         userId: userId,
+//       },
+//     });
+
+//     return newFolder;
+//   } catch (error) {
+//     console.log(`error at readFilesQuery(), ${error}`);
+//   }
+// }
+
 export default {
   createUserQuery,
   createFileQuery,

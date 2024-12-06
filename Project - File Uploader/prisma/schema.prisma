@@ -29,7 +29,7 @@ model folders {
   name   String @unique
   userId Int
   user   users  @relation(fields: [userId], references: [id])
-  // files  file[]
+  files  file[]
 }
 
 model file {
@@ -39,6 +39,6 @@ model file {
   mimetype   String
   size       Int
   uploadedAt DateTime @default(now())
-  // folderId   Int
-  // folder     folders  @relation(fields: [folderId], references: [id])
+  folderId   Int
+  folder     folders  @relation(fields: [folderId], references: [id])
 }
