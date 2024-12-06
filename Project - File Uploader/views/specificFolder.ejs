@@ -17,6 +17,7 @@
             <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
             <form action="/folder/<%= folderName %>/delete" method="POST" style="display: inline">
               <input type="hidden" name="fileId" value="<%= file.id %>" />
+              <input type="hidden" name="filePath" value="/<%= file.filepath.replace(/\\/g, '/') %>" />
               <button type="submit" class="deleteButton">Delete</button>
             </form>
             <% }) %>

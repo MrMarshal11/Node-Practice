@@ -1,6 +1,8 @@
 import model from "../prisma/queries.js";
 import bcrypt from "bcryptjs";
 import passport from "passport";
+import fs from "fs";
+import path from "node:path";
 
 async function renderIndex(req, res) {
   try {
@@ -51,16 +53,10 @@ async function postUploadedFiles(req, res) {
   try {
     const { filename, path: filepath, mimetype, size } = req.file;
     const folderName = req.params.folderName;
-    console.log(folderName);
 
     const folder = await model.readFolderFromNameQuery(folderName);
 
-    console.log(folder);
-
     const folderId = folder.id;
-
-    console.log(folderId);
-
     await model.createFileQuery(filename, filepath, mimetype, size, folderId);
 
     console.log(`file collected: ${filename}`); // for debugging
@@ -74,9 +70,19 @@ async function deleteFile(req, res) {
   try {
     const folderName = req.params.folderName;
     const fileId = parseInt(req.body.fileId);
+    const filePath = path.join(process.cwd(), req.body.filePath);
 
     await model.deleteFileQuery(fileId);
-    console.log(`file id: ${fileId} successfully deleted.`);
+    console.log(`file id: ${fileId} successfully deleted from database.`);
+
+    // Deleting from fs as well
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(`Error removing file: ${err}`);
+        return;
+      }
+      console.log(`file successfully delete from: ${filePath}.`);
+    });
 
     await res.redirect(`/folder/${folderName}`);
   } catch (error) {
