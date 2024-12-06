@@ -130,9 +130,10 @@ async function sendNewFolderToDB(req, res) {
 async function renderFileStats(req, res) {
   try {
     const filename = req.params.fileName;
+    const folderName = req.params.folderName;
     const file = await model.readFileByName(filename);
 
-    await res.render("specificFolder", { page: "stats", file });
+    await res.render("specificFolder", { page: "stats", file, folderName });
   } catch (error) {
     console.log(`error at renderFileStats(), ${error}`);
   }
