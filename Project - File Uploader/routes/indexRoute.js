@@ -25,6 +25,10 @@ indexRouter.post(
   controller.postUploadedFiles
 );
 indexRouter.post("/folder/:folderName/delete", controller.deleteFile);
+indexRouter.post(
+  "/folder/:folderName/:fileName/download",
+  controller.downloadFile
+);
 indexRouter.post("/delete", controller.deleteFolder);
 
 export default indexRouter;

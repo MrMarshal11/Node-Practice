@@ -15,8 +15,14 @@
                 <h3>File Name: <%= file.filename %></h3>
                 <h3>File Size: <%= file.size %></h3>
                 <h3>File Created: <%= file.uploadedAt %></h3>
+                <form action="/folder/<%= folderName %>/<%= file.filename %>/download" method="POST" style="display: inline">
+                  <input type="hidden" name="filePath" value="<%= file.filepath.replace(/\\/g, '/') %>" />
+                  <input type="hidden" name="folderName" value="<%= folderName %>" />
+                  <button type="submit" class="deleteButton">Download?</button>
+                </form>
               </div>
               <button><a href="/folder/<%= folderName %>">Back to Folder</a></button>
+
         </div>
       <% } else { %>
       <div class="mainBody">

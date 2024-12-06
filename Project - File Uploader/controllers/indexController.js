@@ -41,7 +41,6 @@ async function renderSpecificFolder(req, res) {
     const folderId = folder.id;
 
     const files = await model.readFilesQuery(folderId);
-    console.log(files);
 
     await res.render("specificFolder", { user, folderName, files, page: null });
   } catch (error) {
@@ -139,6 +138,26 @@ async function renderFileStats(req, res) {
   }
 }
 
+async function downloadFile(req, res) {
+  try {
+    const filepath = req.body.filePath;
+    const folderName = req.params.folderName;
+
+    const fileName = req.params.fileName;
+    const file = await model.readFileByName(fileName);
+
+    await res.download(filepath, (err) => {
+      if (err) {
+        res.status(500).send("File not found or cannot be downloaded.");
+      }
+    });
+
+    console.log(`downloaded file from: ${filepath}`);
+  } catch (error) {
+    console.log(`error at downloadFile(), ${error}`);
+  }
+}
+
 // Login & Sign Up functionalities below:
 
 async function renderLogin(req, res) {
@@ -199,4 +218,5 @@ export default {
   deleteFile,
   deleteFolder,
   renderFileStats,
+  downloadFile,
 };
