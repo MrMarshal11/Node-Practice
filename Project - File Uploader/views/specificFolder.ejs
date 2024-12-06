@@ -10,13 +10,16 @@
       <%- include('partials/navBarSignedIn') %>
       <div class="mainBody">
         <button><a href="/folder/<%= folderName %>/uploadFile">Upload new files?</a></button>
-        <!-- map the files in the respective folder, but for now before changing the schema just show this  -->
         <div>
           <h2>Files:</h2>
           <% files.map(file => { %>
             <h3>File Uploaded:</h3>
             <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
-          <% }) %>
+            <form action="/folder/<%= folderName %>/delete" method="POST" style="display: inline">
+              <input type="hidden" name="fileId" value="<%= file.id %>" />
+              <button type="submit" class="deleteButton">Delete</button>
+            </form>
+            <% }) %>
       </div>
   </body>
 </html>

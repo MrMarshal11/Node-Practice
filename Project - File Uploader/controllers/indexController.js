@@ -64,9 +64,23 @@ async function postUploadedFiles(req, res) {
     await model.createFileQuery(filename, filepath, mimetype, size, folderId);
 
     console.log(`file collected: ${filename}`); // for debugging
-    await res.redirect("/");
+    await res.redirect(`/folder/${folderName}`);
   } catch (error) {
     console.log(`error at postUploadedFiles(), ${error}`);
+  }
+}
+
+async function deleteFile(req, res) {
+  try {
+    const folderName = req.params.folderName;
+    const fileId = parseInt(req.body.fileId);
+
+    await model.deleteFileQuery(fileId);
+    console.log(`file id: ${fileId} successfully deleted.`);
+
+    await res.redirect(`/folder/${folderName}`);
+  } catch (error) {
+    console.log(`error at deleteFile(), ${error}`);
   }
 }
 
@@ -151,4 +165,5 @@ export default {
   renderNewFolderForm,
   sendNewFolderToDB,
   renderSpecificFolder,
+  deleteFile,
 };
