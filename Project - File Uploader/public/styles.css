@@ -64,3 +64,35 @@ button {
   padding-bottom: 10vh;
   gap: 25px;
 }
+
+.folderClick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 20px;
+}
+
+.folder {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  gap: 30px;
+  width: 90vw;
+}
+
+.foldersDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 20px;
+  width: 90vw;
+}
+
+.folderImg {
+  height: 50px;
+  width: auto;
+  filter: invert(1) sepia(1) saturate(100); /* Makes the svg yellow */
+}

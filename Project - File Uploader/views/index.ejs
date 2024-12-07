@@ -28,16 +28,23 @@
       <button><a href="/newFolder">Make New Folder?</a></button>
     </div>
     <% if (folders.length !== 0) { %>
-    <div>
+    <div class="foldersDiv">
       <h3>Folders:</h3>
       <% folders.map(folder => { %>
-      <button>
-        <a href="/folder/<%= folder.name %>"><%= folder.name %></a>
-      </button>
-      <form action="/delete" method="POST" style="display: inline">
-        <input type="hidden" name="folderName" value="<%= folder.name %>" />
-        <button type="submit" class="deleteButton">Delete</button>
-      </form>
+      <div class="folder">
+        <div class="folderClick">
+          <a href="/folder/<%= folder.name %>"
+            ><img src="svgs/folder.svg" alt="folderImage" class="folderImg"
+          /></a>
+          <button>
+            <a href="/folder/<%= folder.name %>"><%= folder.name %></a>
+          </button>
+        </div>
+        <form action="/delete" method="POST" style="display: inline">
+          <input type="hidden" name="folderName" value="<%= folder.name %>" />
+          <button type="submit" class="deleteButton">Delete</button>
+        </form>
+      </div>
       <% }) %>
     </div>
     <% } %> <% } %> <% } %>
