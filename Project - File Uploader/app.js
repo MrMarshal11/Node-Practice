@@ -1,3 +1,5 @@
+// uploading to db is different, like changing the node_modules manually doesn't work. Fix this in the future.
+
 import express from "express";
 import path from "node:path";
 import usePassport from "./passport/passport.js";
