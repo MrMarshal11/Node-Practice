@@ -43,7 +43,7 @@ a {
 }
 a:hover {
   cursor: pointer;
-  color: rgb(143, 240, 130);
+  color: rgb(216, 216, 216);
 }
 
 button {
@@ -61,8 +61,16 @@ button {
   justify-content: center;
   flex-flow: column wrap;
   padding-top: 20vh;
-  padding-bottom: 10vh;
+  padding-bottom: 7vh;
   gap: 25px;
+  border-bottom: 1px solid white;
+  width: 100%;
+  button {
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+  }
 }
 
 .folderClick {
@@ -84,15 +92,43 @@ button {
 
 .foldersDiv {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-flow: column;
   gap: 20px;
   width: 90vw;
+  padding-bottom: 10vh;
+  h3 {
+    font-size: 1.5rem;
+  }
 }
 
 .folderImg {
   height: 50px;
   width: auto;
   filter: invert(1) sepia(1) saturate(100); /* Makes the svg yellow */
+}
+.folderImg:hover {
+  filter: invert(1) sepia(1) saturate(10);
+}
+
+.deleteButton {
+  color: white;
+  font-weight: 800;
+  background-color: red;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  border: 1px solid white;
+}
+.deleteButton:hover {
+  background-color: rgb(134, 4, 4);
+  cursor: pointer;
+}
+
+div.folder {
+  a {
+    font-size: 2rem;
+  }
 }

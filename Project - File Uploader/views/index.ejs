@@ -36,9 +36,7 @@
           <a href="/folder/<%= folder.name %>"
             ><img src="svgs/folder.svg" alt="folderImage" class="folderImg"
           /></a>
-          <button>
-            <a href="/folder/<%= folder.name %>"><%= folder.name %></a>
-          </button>
+          <a href="/folder/<%= folder.name %>"><%= folder.name %></a>
         </div>
         <form action="/delete" method="POST" style="display: inline">
           <input type="hidden" name="folderName" value="<%= folder.name %>" />
