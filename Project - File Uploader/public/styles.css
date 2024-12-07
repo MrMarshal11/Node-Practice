@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 body {
@@ -22,7 +22,7 @@ body {
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
@@ -70,6 +70,7 @@ button {
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px;
+    border: none;
   }
 }
 
@@ -81,16 +82,23 @@ button {
   gap: 20px;
 }
 
-.folder {
+.folder,
+.fileDiv {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-flow: row wrap;
   gap: 30px;
   width: 90vw;
+  background-color: gray;
+  padding-top: 10px;
+  padding-left: 30px;
+  border-radius: 30px;
+  box-shadow: 5px 10px 10px blue;
 }
 
 .foldersDiv {
+  margin-top: 50px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -131,4 +139,118 @@ div.folder {
   a {
     font-size: 2rem;
   }
+}
+
+.fileDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-flow: row wrap;
+  width: 90vw;
+}
+
+.filesDiv {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column;
+  width: 90vw;
+  gap: 30px;
+  h2 {
+    margin-bottom: -20px;
+  }
+}
+
+.buttonSegment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-flow: row wrap;
+  padding-right: 30px;
+  a {
+    font-size: 1rem;
+  }
+  .statsButton {
+    background-color: rgb(5, 179, 5);
+    border: 1px solid white;
+  }
+  .statsButton:hover {
+    background-color: rgb(0, 161, 0);
+  }
+}
+
+.fileSegment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-flow: column;
+  .fileImg {
+    max-height: 100px;
+  }
+}
+
+.postForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  gap: 10px;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: gray;
+  border-radius: 20px;
+  box-shadow: 3px 3px 50px white;
+  fieldset {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    border: none;
+  }
+  button {
+    background-color: rgb(0, 68, 255);
+    color: white;
+    font-weight: 1000;
+    border: 1px solid white;
+  }
+  button:hover {
+    background-color: blue;
+    cursor: pointer;
+  }
+}
+
+.formDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  gap: 20px;
+}
+
+.fileStats {
+  background-color: gray;
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+  gap: 10px;
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.downloadButton {
+  background-color: rgb(25, 175, 5);
+  color: white;
+  font-weight: 1000;
+  border: 1px solid white;
+}
+.downloadButton:hover {
+  background-color: rgb(0, 204, 17);
+  cursor: pointer;
 }

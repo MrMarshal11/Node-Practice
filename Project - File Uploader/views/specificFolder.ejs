@@ -18,7 +18,7 @@
                 <form action="/folder/<%= folderName %>/<%= file.filename %>/download" method="POST" style="display: inline">
                   <input type="hidden" name="filePath" value="<%= file.filepath.replace(/\\/g, '/') %>" />
                   <input type="hidden" name="folderName" value="<%= folderName %>" />
-                  <button type="submit" class="deleteButton">Download?</button>
+                  <button type="submit" class="downloadButton">Download?</button>
                 </form>
               </div>
               <button><a href="/folder/<%= folderName %>">Back to Folder</a></button>
@@ -27,17 +27,23 @@
       <% } else { %>
       <div class="mainBody">
         <button><a href="/folder/<%= folderName %>/uploadFile">Upload new files?</a></button>
-        <div>
+        <div class="filesDiv">
           <h2>Files:</h2>
           <% files.map(file => { %>
-            <h3>File Uploaded:</h3>
-            <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
-            <button type="button"><a href="/folder/<%= folderName %>/<%= file.filename %>/stats">File Stats</a></button>
-            <form action="/folder/<%= folderName %>/delete" method="POST" style="display: inline">
-              <input type="hidden" name="fileId" value="<%= file.id %>" />
-              <input type="hidden" name="filePath" value="/<%= file.filepath.replace(/\\/g, '/') %>" />
-              <button type="submit" class="deleteButton">Delete</button>
-            </form>
+            <div class="fileDiv">
+              <div class="fileSegment">
+                <h3>File Uploaded:</h3>
+                <img src="/<%= file.filepath.replace(/\\/g, '/') %>" alt="<%= file.filename %>" class="fileImg">
+              </div>
+              <div class="buttonSegment">
+                <button type="button" class="statsButton"><a href="/folder/<%= folderName %>/<%= file.filename %>/stats">File Stats</a></button>
+                <form action="/folder/<%= folderName %>/delete" method="POST" style="display: inline">
+                  <input type="hidden" name="fileId" value="<%= file.id %>" />
+                  <input type="hidden" name="filePath" value="/<%= file.filepath.replace(/\\/g, '/') %>" />
+                  <button type="submit" class="deleteButton">Delete</button>
+                </form>
+              </div>
+            </div>
             <% }) %>
       </div>
       <% } %>
