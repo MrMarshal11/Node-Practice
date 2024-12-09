@@ -31,6 +31,12 @@ let messages = {
   },
 };
 
+app.use((req, res, next) => {
+  // Middleware function to simulate a logged in user.
+  req.me = users[1];
+  next();
+});
+
 app.get("/users", (req, res) => {
   return res.send(Object.values(users));
 });
@@ -52,11 +58,24 @@ app.post("/messages", (req, res) => {
   const message = {
     id,
     text: req.body.text,
+    userId: req.me.id, // uses the id from the simulated user.
   };
 
   messages[id] = message;
 
   return res.send(message);
+});
+
+app.delete("/messages/:messageId", (req, res) => {
+  const { [req.params.messageId]: message, ...otherMessages } = messages;
+
+  messages = otherMessages;
+
+  return res.send(message);
+});
+
+app.get("/session", (req, res) => {
+  return res.send(users[req.me.id]);
 });
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}/`));
