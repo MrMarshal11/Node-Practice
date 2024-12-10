@@ -1,6 +1,10 @@
+import "../styles/postForm.css";
+
 function Login() {
   return (
-    <form action="/login" method="POST">
+    <form action="/login" method="POST" className="postForm">
+      <h1>Login</h1>
+
       <fieldset>
         <label>
           Username:

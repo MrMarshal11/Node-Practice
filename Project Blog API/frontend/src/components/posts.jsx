@@ -1,7 +1,23 @@
+import "../styles/posts.css";
+
 function Posts() {
   return (
-    <div>
-      <p>posts will be here etc.</p>
+    <div className="postDivs">
+      <div className="post">
+        <h2>New Post Title Here!</h2>
+        <img src="react.svg" alt="temporaryImg" />
+        <h4>By name, date...</h4>
+      </div>
+      <div className="post">
+        <h2>New Post Title Here!</h2>
+        <img src="react.svg" alt="temporaryImg" />
+        <h4>By name, date...</h4>
+      </div>
+      <div className="post">
+        <h2>New Post Title Here!</h2>
+        <img src="react.svg" alt="temporaryImg" />
+        <h4>By name, date...</h4>
+      </div>
     </div>
   );
 }

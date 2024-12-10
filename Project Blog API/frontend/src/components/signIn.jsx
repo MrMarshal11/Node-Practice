@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import "../styles/postForm.css";
+
 // All the sending data to backend is done here
 function SignIn() {
   const navigate = useNavigate();
@@ -52,7 +54,14 @@ function SignIn() {
 
   return (
     <>
-      <form action="/signIn" method="POST" onSubmit={handleSubmit}>
+      <form
+        action="/signIn"
+        method="POST"
+        onSubmit={handleSubmit}
+        className="postForm"
+      >
+        <h1>Sign In</h1>
+
         <fieldset>
           <label>
             Username:

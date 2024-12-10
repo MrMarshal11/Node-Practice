@@ -1,0 +1,31 @@
+.postDivs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  width: 90vw;
+  background-color: rgb(27, 27, 27);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  gap: 20px;
+  img {
+    max-height: 250px;
+    min-height: 200px;
+    width: auto;
+    border: 2px solid white;
+    padding: 20px;
+  }
+}
+
+.visitorMessage {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
