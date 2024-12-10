@@ -1,11 +1,15 @@
 import "../styles/posts.css";
 
 function VisitorMessage() {
-  return (
-    <div className="visitorMessage">
-      <h2>Sign In To Create Posts!</h2>
-    </div>
-  );
+  const token = localStorage.getItem("accessToken");
+
+  function isLoggedIn() {
+    if (!token) {
+      return <h2>Sign In To Create Posts!</h2>;
+    }
+  }
+
+  return <div className="visitorMessage">{isLoggedIn()}</div>;
 }
 
 export default VisitorMessage;

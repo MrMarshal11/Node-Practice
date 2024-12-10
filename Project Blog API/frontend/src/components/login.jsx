@@ -30,11 +30,21 @@ function Login() {
         }),
       });
 
+      // If successfully logged in, store desired variables in localStorage
       if (response.ok) {
-        alert("Login successful!");
-        navigate("/");
+        const data = await response.json();
+        if (data.accessToken) {
+          // Store the token in localStorage or sessionStorage
+          localStorage.setItem("accessToken", data.accessToken);
+          localStorage.setItem("username", formData.username);
+          alert("Login successful!");
+          navigate("/");
+        } else {
+          alert(`Login failed`);
+        }
       } else {
-        alert(`Login failed`);
+        // Handle HTTP errors (e.g., 401 Unauthorized)
+        alert(`Login failed: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error:", error);
