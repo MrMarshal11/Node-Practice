@@ -2,6 +2,7 @@ import ErrorPage from "./ErrorPage";
 import Login from "./login";
 import SignIn from "./signIn";
 import App from "./App";
+import NewPost from "./newPost";
 
 const routes = [
   {
@@ -11,6 +12,7 @@ const routes = [
     children: [
       { path: "login", element: <Login /> },
       { path: "signIn", element: <SignIn /> },
+      { path: "newPost", element: <NewPost /> },
     ],
   },
 ];
