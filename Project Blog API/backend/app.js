@@ -17,9 +17,4 @@ app.use(cors(corsOptions));
 
 app.use("/", indexRouter);
 
-// // just a test
-// app.get("/api", (req, res) => {
-//   res.json({ fruits: ["apple", "banana", "items"] });
-// });
-
 app.listen(port, () => console.log(`running at http://localhost:${port}/`));
