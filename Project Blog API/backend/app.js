@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import indexRouter from "./routes/indexRoutes.js";
+import middleware from "./middleware/passport.js";
 
 const corsOptions = {
   origin: ["http://localhost:5173"],
@@ -11,6 +12,8 @@ const corsOptions = {
 dotenv.config();
 const app = express();
 const port = 8000;
+
+middleware.usePassport(app);
 
 app.use(express.json());
 app.use(cors(corsOptions));
