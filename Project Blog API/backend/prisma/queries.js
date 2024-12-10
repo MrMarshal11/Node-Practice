@@ -1,3 +1,4 @@
+import { name } from "ejs";
 import prisma from "./prisma.js";
 
 async function createUserQuery(username, fullname, hashedPassword) {
@@ -15,4 +16,34 @@ async function createUserQuery(username, fullname, hashedPassword) {
   }
 }
 
-export default { createUserQuery };
+async function getUserFromUsername(username) {
+  try {
+    const user = await prisma.users.findUnique({
+      where: {
+        username: username,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.log(`error at getFromUsername(), ${error}`);
+  }
+}
+
+async function createPostQuery(name, userId, title, description) {
+  try {
+    await prisma.posts.create({
+      data: {
+        name: name,
+        userId: userId,
+        title: title,
+        description: description,
+      },
+    });
+
+    console.log(`successfully created post: ${title}`);
+  } catch (error) {
+    console.log(`error at createPostQuery(), ${error}`);
+  }
+}
+
+export default { createUserQuery, getUserFromUsername, createPostQuery };

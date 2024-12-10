@@ -30,4 +30,18 @@ function verifyLogin(req, res, next) {
   })(req, res, next);
 }
 
-export default { signUp, verifyLogin };
+async function createNewPost(req, res) {
+  try {
+    const { title, description, username } = req.body;
+
+    const user = await model.getUserFromUsername(username);
+
+    await model.createPostQuery(user.fullname, user.id, title, description);
+
+    res.status(201).json({ message: "Post successful" });
+  } catch (error) {
+    console.log(`error at createNewPost(), ${error}`);
+  }
+}
+
+export default { signUp, verifyLogin, createNewPost };

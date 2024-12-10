@@ -16,11 +16,13 @@ model users {
 }
 
 model posts {
-  id         Int      @id @default(autoincrement())
-  name       String
-  uploadedAt DateTime @default(now())
-  userId     Int
-  user       users    @relation(fields: [userId], references: [id])
+  id          Int      @id @default(autoincrement())
+  uploadedAt  DateTime @default(now())
+  name        String
+  userId      Int
+  title       String
+  description String
+  user        users    @relation(fields: [userId], references: [id])
 }
 
 model comments {
