@@ -1,16 +1,25 @@
+import { Link } from "react-router-dom";
 import "../styles/nav.css";
 
 function Nav() {
   return (
     <nav>
       <div className="navLeft">
-        <img src="react.svg" alt="Blog Logo" />
-        <h2>Bloggo.com</h2>
+        <Link to="/">
+          <img src="react.svg" alt="Blog Logo" />
+        </Link>
+        <h2>
+          <Link to="/">Bloggo.com</Link>
+        </h2>
       </div>
 
       <div className="navRight">
-        <h2>Login</h2>
-        <h2>Sign in</h2>
+        <h2>
+          <Link to="/login">Login</Link>
+        </h2>
+        <h2>
+          <Link to="/signIn">Sign in</Link>
+        </h2>
       </div>
     </nav>
   );

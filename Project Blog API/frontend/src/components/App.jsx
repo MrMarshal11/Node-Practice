@@ -1,11 +1,15 @@
+import { Outlet, useLocation } from "react-router-dom";
 import Nav from "./nav";
 import Posts from "./posts";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
       <Nav />
-      <Posts />
+      <Outlet />
+      {location.pathname === "/" && <Posts />}
     </>
   );
 }
