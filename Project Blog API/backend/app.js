@@ -6,7 +6,7 @@ import indexRouter from "./routes/indexRoutes.js";
 import middleware from "./middleware/passport.js";
 
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:1000", "http://localhost:2000"],
 };
 
 dotenv.config();

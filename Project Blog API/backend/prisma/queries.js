@@ -49,7 +49,6 @@ async function createPostQuery(name, userId, title, description) {
 async function getPostsQuery() {
   try {
     const posts = await prisma.posts.findMany();
-    console.log(`successfully founds posts`);
     return posts;
   } catch (error) {
     console.log(`error at getPostsQuery(), ${error}`);
@@ -63,7 +62,6 @@ async function getCommentsQuery(postId) {
         postId: postId,
       },
     });
-    console.log(`successfully founds comments`);
     return comments;
   } catch (error) {
     console.log(`error at getCommentsQuery(), ${error}`);
