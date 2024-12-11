@@ -46,4 +46,19 @@ async function createPostQuery(name, userId, title, description) {
   }
 }
 
-export default { createUserQuery, getUserFromUsername, createPostQuery };
+async function getPostsQuery() {
+  try {
+    const posts = await prisma.posts.findMany();
+    console.log(`successfully founds posts`);
+    return posts;
+  } catch (error) {
+    console.log(`error at getPostsQuery(), ${error}`);
+  }
+}
+
+export default {
+  createUserQuery,
+  getUserFromUsername,
+  createPostQuery,
+  getPostsQuery,
+};

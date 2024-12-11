@@ -44,4 +44,14 @@ async function createNewPost(req, res) {
   }
 }
 
-export default { signUp, verifyLogin, createNewPost };
+async function getPosts(req, res) {
+  try {
+    const posts = await model.getPostsQuery();
+    console.log(posts);
+    res.status(201).json(posts);
+  } catch (error) {
+    console.log(`error at getPosts(), ${error}`);
+  }
+}
+
+export default { signUp, verifyLogin, createNewPost, getPosts };

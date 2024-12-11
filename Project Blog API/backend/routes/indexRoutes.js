@@ -4,6 +4,8 @@ import middleware from "../middleware/passport.js";
 
 const indexRouter = express.Router();
 
+indexRouter.get("/posts", controller.getPosts);
+
 indexRouter.post("/signIn", controller.signUp);
 indexRouter.post("/login", controller.verifyLogin);
 
