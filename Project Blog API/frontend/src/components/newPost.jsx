@@ -68,13 +68,15 @@ function NewPost() {
         <fieldset>
           <label>
             Description:
-            <input
+            <textarea
               id="description"
               name="description"
               type="text"
               value={formData.description}
               onChange={handleChange}
               required
+              cols={30}
+              rows={7}
             />
           </label>
         </fieldset>
