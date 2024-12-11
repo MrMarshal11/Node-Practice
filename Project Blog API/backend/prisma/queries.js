@@ -56,6 +56,20 @@ async function getPostsQuery() {
   }
 }
 
+async function getCommentsQuery(postId) {
+  try {
+    const comments = await prisma.comments.findMany({
+      where: {
+        postId: postId,
+      },
+    });
+    console.log(`successfully founds comments`);
+    return comments;
+  } catch (error) {
+    console.log(`error at getCommentsQuery(), ${error}`);
+  }
+}
+
 async function newCommentQuery(name, comment, postId) {
   try {
     await prisma.comments.create({
@@ -77,5 +91,6 @@ export default {
   getUserFromUsername,
   createPostQuery,
   getPostsQuery,
+  getCommentsQuery,
   newCommentQuery,
 };

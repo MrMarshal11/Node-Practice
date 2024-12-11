@@ -53,6 +53,18 @@ async function getPosts(req, res) {
   }
 }
 
+async function getComments(req, res) {
+  try {
+    const { postId } = req.query;
+    const intPostId = parseInt(postId);
+
+    const comments = await model.getCommentsQuery(intPostId);
+    res.status(201).json(comments);
+  } catch (error) {
+    console.log(`error at getComments(), ${error}`);
+  }
+}
+
 async function postComment(req, res) {
   try {
     // Because the response is sent weird ({"8":{"name":"ocmm","comment":"ah"}}), how we extract the results is a bit different:
@@ -71,4 +83,11 @@ async function postComment(req, res) {
   }
 }
 
-export default { signUp, verifyLogin, createNewPost, getPosts, postComment };
+export default {
+  signUp,
+  verifyLogin,
+  createNewPost,
+  getPosts,
+  getComments,
+  postComment,
+};
