@@ -47,11 +47,28 @@ async function createNewPost(req, res) {
 async function getPosts(req, res) {
   try {
     const posts = await model.getPostsQuery();
-    console.log(posts);
     res.status(201).json(posts);
   } catch (error) {
     console.log(`error at getPosts(), ${error}`);
   }
 }
 
-export default { signUp, verifyLogin, createNewPost, getPosts };
+async function postComment(req, res) {
+  try {
+    // Because the response is sent weird ({"8":{"name":"ocmm","comment":"ah"}}), how we extract the results is a bit different:
+    const requestData = req.body;
+
+    const postIdString = Object.keys(requestData)[0];
+    const postId = parseInt(postIdString);
+
+    const { name, comment } = requestData[postId];
+
+    await model.newCommentQuery(name, comment, postId);
+
+    res.status(201).json({ message: `comment successfully uploaded` });
+  } catch (error) {
+    console.log(`error at postComment(), ${error}`);
+  }
+}
+
+export default { signUp, verifyLogin, createNewPost, getPosts, postComment };

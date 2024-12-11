@@ -56,9 +56,26 @@ async function getPostsQuery() {
   }
 }
 
+async function newCommentQuery(name, comment, postId) {
+  try {
+    await prisma.comments.create({
+      data: {
+        name: name,
+        description: comment,
+        postId: postId,
+      },
+    });
+
+    console.log(`successfully created comment`);
+  } catch (error) {
+    console.log(`error at newCommentQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
   createPostQuery,
   getPostsQuery,
+  newCommentQuery,
 };

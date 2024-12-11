@@ -10,6 +10,7 @@ indexRouter.post("/signIn", controller.signUp);
 indexRouter.post("/login", controller.verifyLogin);
 
 indexRouter.post("/newPost", controller.createNewPost);
+indexRouter.post("/newComment", controller.postComment);
 
 // Protected route example: only accessible if valid JWT is present (maybe use react instead?)
 indexRouter.get("/protected", middleware.authenticateToken, (req, res) => {

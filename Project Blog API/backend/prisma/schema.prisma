@@ -16,13 +16,14 @@ model users {
 }
 
 model posts {
-  id          Int      @id @default(autoincrement())
-  uploadedAt  DateTime @default(now())
+  id          Int        @id @default(autoincrement())
+  uploadedAt  DateTime   @default(now())
   name        String
   userId      Int
   title       String
   description String
-  user        users    @relation(fields: [userId], references: [id])
+  user        users      @relation(fields: [userId], references: [id])
+  comments    comments[]
 }
 
 model comments {
@@ -30,4 +31,6 @@ model comments {
   name        String?
   description String
   uploadedAt  DateTime @default(now())
+  postId      Int
+  post        posts    @relation(fields: [postId], references: [id])
 }
