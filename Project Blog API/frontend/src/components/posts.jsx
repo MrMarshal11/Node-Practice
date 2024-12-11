@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import "../styles/posts.css";
 
 function Posts() {
+  const [loading, setLoading] = useState(false); // Loading state
+
   // Get posts from the db
   const [posts, setPosts] = useState("");
 
   async function displayPosts() {
     try {
+      setLoading(true); // Show loading screen
       const response = await fetch("http://localhost:8000/posts", {
         method: "GET",
         headers: {
@@ -16,6 +19,7 @@ function Posts() {
       });
       const data = await response.json();
       setPosts(data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching posts", error);
     }
@@ -75,7 +79,11 @@ function Posts() {
 
   return (
     <div className="postDivs">
-      {posts.length > 0 ? (
+      {loading ? (
+        <div className="loading-screen">
+          <p>Loading...</p>
+        </div>
+      ) : posts.length > 0 ? (
         posts.map((post, index) => (
           <div className="post" key={index}>
             <h2>{post.title}</h2>
