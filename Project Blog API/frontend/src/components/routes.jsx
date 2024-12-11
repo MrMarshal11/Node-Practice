@@ -3,6 +3,7 @@ import Login from "./login";
 import SignIn from "./signIn";
 import App from "./App";
 import NewPost from "./newPost";
+import Comments from "./comments";
 
 const routes = [
   {
@@ -13,6 +14,7 @@ const routes = [
       { path: "login", element: <Login /> },
       { path: "signIn", element: <SignIn /> },
       { path: "newPost", element: <NewPost /> },
+      { path: "comments", element: <Comments /> },
     ],
   },
 ];

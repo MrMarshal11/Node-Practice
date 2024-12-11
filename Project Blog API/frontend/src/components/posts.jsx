@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/posts.css";
 
 function Posts() {
@@ -20,7 +21,7 @@ function Posts() {
     }
   }
 
-  // When component mounts, display posts.
+  // When component mounts, display posts & comments.
   useEffect(() => {
     displayPosts();
   }, []);
@@ -82,6 +83,18 @@ function Posts() {
             <h4>
               By {post.name}, {post.uploadedAt}
             </h4>
+            <Link
+              to="/comments"
+              state={{
+                postId: post.id,
+                postUploadedAt: post.uploadedAt,
+                postName: post.name,
+                postTitle: post.title,
+                postDescription: post.description,
+              }}
+            >
+              View Comments
+            </Link>
             {/* Comment form functionality (could make it a separate component) */}
             <button type="button" onClick={() => toggleForm(post.id)}>
               Comment?
