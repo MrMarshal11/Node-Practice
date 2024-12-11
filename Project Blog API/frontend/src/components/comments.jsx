@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "../styles/posts.css";
 
 function Comments() {
   const location = useLocation();
@@ -34,8 +35,8 @@ function Comments() {
   }, []);
 
   return (
-    <div>
-      <div className="post">
+    <div className="commentDiv">
+      <div className="commentPost">
         <h2>{postTitle}</h2>
         <div className="temporaryImg">{postDescription}</div>
         <h4>
@@ -47,13 +48,15 @@ function Comments() {
         <h2>Comments:</h2>
         {comments.map((comment, index) => (
           <div className="comment" key={index}>
-            <h2>{comment.name || "Anonymous"}</h2>
+            <h3>{comment.name || "Anonymous"}:</h3>
             <h4 className="temporaryImg">{comment.description}</h4>
           </div>
         ))}
-
-        {/* map all the comments here */}
       </div>
+
+      <button type="button">
+        <a href="/">Back to home</a>
+      </button>
     </div>
   );
 }

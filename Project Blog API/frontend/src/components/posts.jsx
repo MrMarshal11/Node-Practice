@@ -92,6 +92,7 @@ function Posts() {
                 postTitle: post.title,
                 postDescription: post.description,
               }}
+              className="viewCommentsLink"
             >
               View Comments
             </Link>
@@ -100,7 +101,10 @@ function Posts() {
               Comment?
             </button>
             {showForm[post.id] && (
-              <form onSubmit={(e) => handleSubmit(e, post.id)}>
+              <form
+                className="postCommentForm"
+                onSubmit={(e) => handleSubmit(e, post.id)}
+              >
                 <fieldset>
                   <label>
                     Name:
