@@ -1,5 +1,6 @@
 import Login from "./login";
 import Posts from "./posts";
+import UnpublishedPosts from "./unpublishedPosts";
 import "../styles/posts.css";
 
 function VisitorMessage() {
@@ -12,8 +13,10 @@ function VisitorMessage() {
     } else {
       return (
         <>
-          <h2>Welcome Back {username}</h2>
+          <h2 className="visitorMessage">Welcome Back {username}</h2>
           <Posts />
+
+          <UnpublishedPosts />
         </>
       );
     }

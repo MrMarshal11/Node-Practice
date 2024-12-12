@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   width: 90vw;
   background-color: rgb(27, 27, 27);
   padding-top: 20px;
@@ -23,11 +23,47 @@
     border: 2px solid white;
     padding: 20px;
   }
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
+  width: 80%;
+}
+
+.unpublishedPostDivs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: column wrap;
+  width: 90vw;
+  background-color: rgb(94, 94, 94);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.unpublishedPost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  gap: 20px;
+  img {
+    max-height: 250px;
+    min-height: 200px;
+    width: auto;
+    border: 2px solid white;
+    padding: 20px;
+  }
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
+  width: 80%;
 }
 
 .visitorMessage {
   margin-bottom: 20px;
   font-size: 2rem;
+  color: white;
 }
 
 .commentDiv {
