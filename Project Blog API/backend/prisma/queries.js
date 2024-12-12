@@ -169,6 +169,24 @@ async function getPostFromPostId(postId) {
   }
 }
 
+async function updatePostQuery(title, description, postId) {
+  try {
+    await prisma.posts.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        title: title,
+        description: description,
+      },
+    });
+
+    console.log(`updated post: ${postId}`);
+  } catch (error) {
+    console.log(`error at updatePostQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -182,4 +200,5 @@ export default {
   deletePostQuery,
   deleteUnpublishedPostQuery,
   getPostFromPostId,
+  updatePostQuery,
 };

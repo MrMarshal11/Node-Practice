@@ -177,6 +177,24 @@ async function postUnpublishedPost(req, res) {
   }
 }
 
+async function editPost(req, res) {
+  try {
+    // Because the response is sent weird ({"8":{"title":"ocmm","description":"ah"}}), how we extract the results is a bit different:
+    const requestData = req.body;
+
+    const postIdString = Object.keys(requestData)[0];
+    const postId = parseInt(postIdString);
+
+    const { title, description } = requestData[postId];
+
+    await model.updatePostQuery(title, description, postId);
+
+    res.status(201).json({ message: `post updated successfully` });
+  } catch (error) {
+    console.log(`error at editPost(), ${error}`);
+  }
+}
+
 export default {
   signUp,
   verifyLogin,
@@ -190,4 +208,5 @@ export default {
   deletePost,
   deleteUnpublishedPost,
   postUnpublishedPost,
+  editPost,
 };
