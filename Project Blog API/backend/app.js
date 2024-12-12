@@ -6,7 +6,12 @@ import indexRouter from "./routes/indexRoutes.js";
 import middleware from "./middleware/passport.js";
 
 const corsOptions = {
-  origin: ["http://localhost:1000", "http://localhost:2000"],
+  origin: [
+    "http://localhost:1000",
+    "http://localhost:2000",
+    "https://blogapifrontend1.vercel.app/",
+    "https://blogapifrontend2.vercel.app/",
+  ],
 };
 
 dotenv.config();
@@ -20,4 +25,4 @@ app.use(cors(corsOptions));
 
 app.use("/", indexRouter);
 
-app.listen(port, () => console.log(`running at http://localhost:${port}/`));
+app.listen(port, () => console.log(`server is running......`));
