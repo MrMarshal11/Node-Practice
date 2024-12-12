@@ -34,6 +34,35 @@ function UnpublishedPosts() {
     displayPosts();
   }, []);
 
+  // Delete post functionality
+  const handleDeleteUnpublishedPost = async (e) => {
+    e.preventDefault();
+
+    const postId = e.target.value;
+
+    try {
+      const response = await fetch(
+        `http://localhost:8000/deleteUnpublishedPost?postId=${postId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        alert("Delete successful!");
+        displayPosts();
+      } else {
+        alert(`Something went wrong in fetch(deletePost)`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong in fetch(deletePost) here");
+    }
+  };
+
   return (
     <div className="unpublishedPostDivs">
       {loading ? (
@@ -54,7 +83,13 @@ function UnpublishedPosts() {
                 <button type="button">Edit</button>{" "}
                 {/* Inputs containing current values replace position & Save button */}
                 <button type="button">Publish</button>
-                <button type="button">Delete</button>
+                <button
+                  type="button"
+                  onClick={handleDeleteUnpublishedPost}
+                  value={post.id}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
