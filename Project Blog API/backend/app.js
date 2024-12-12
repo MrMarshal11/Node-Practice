@@ -13,6 +13,7 @@ const corsOptions = {
     "http://localhost:2000",
     "https://blogapifrontend1.vercel.app",
     "https://blogapifrontend2.vercel.app",
+    "https://blogapifrontend1-9jsncee06-mrmarshal11s-projects.vercel.app",
   ],
 };
 
