@@ -13,5 +13,6 @@ indexRouter.post("/newPost", controller.createNewPost);
 indexRouter.post("/newComment", controller.postComment);
 
 indexRouter.get("/userPosts", controller.getUserPosts);
+indexRouter.get("/userUnpublishedPosts", controller.getUserUnpublishedPosts);
 
 export default indexRouter;

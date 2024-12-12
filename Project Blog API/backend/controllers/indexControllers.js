@@ -97,6 +97,19 @@ async function getUserPosts(req, res) {
   }
 }
 
+async function getUserUnpublishedPosts(req, res) {
+  try {
+    const { username } = req.query;
+
+    const user = await model.getUserFromUsername(username);
+
+    const posts = await model.getUserUnpublishedPostsQuery(user.id);
+    res.status(201).json(posts);
+  } catch (error) {
+    console.log(`error at getUserUnpublishedPosts(), ${error}`);
+  }
+}
+
 export default {
   signUp,
   verifyLogin,
@@ -105,4 +118,5 @@ export default {
   getComments,
   postComment,
   getUserPosts,
+  getUserUnpublishedPosts,
 };

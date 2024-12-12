@@ -8,11 +8,12 @@ datasource db {
 }
 
 model users {
-  id       Int     @id @default(autoincrement())
-  fullname String
-  username String  @unique
-  password String
-  posts    posts[]
+  id               Int                @id @default(autoincrement())
+  fullname         String
+  username         String             @unique
+  password         String
+  posts            posts[]
+  unpublishedPosts unpublishedPosts[]
 }
 
 model posts {
@@ -24,6 +25,16 @@ model posts {
   description String
   user        users      @relation(fields: [userId], references: [id])
   comments    comments[]
+}
+
+model unpublishedPosts {
+  id          Int      @id @default(autoincrement())
+  uploadedAt  DateTime @default(now())
+  name        String
+  userId      Int
+  title       String
+  description String
+  user        users    @relation(fields: [userId], references: [id])
 }
 
 model comments {

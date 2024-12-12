@@ -98,6 +98,19 @@ async function getUserPostsQuery(userId) {
   }
 }
 
+async function getUserUnpublishedPostsQuery(userId) {
+  try {
+    const posts = await prisma.unpublishedPosts.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return posts;
+  } catch (error) {
+    console.log(`error at getUserUnpublishedPostsQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -106,4 +119,5 @@ export default {
   getCommentsQuery,
   newCommentQuery,
   getUserPostsQuery,
+  getUserUnpublishedPostsQuery,
 };
