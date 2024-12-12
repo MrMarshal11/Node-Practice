@@ -63,6 +63,35 @@ function UnpublishedPosts() {
     }
   };
 
+  // Publish unpublishedPost functionality
+  const handlePublishUnpublishedPost = async (e) => {
+    e.preventDefault();
+
+    const postId = e.target.value;
+
+    try {
+      const response = await fetch(
+        `http://localhost:8000/publishUnpublishedPost?postId=${postId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        alert("Publish successful!");
+        displayPosts();
+      } else {
+        alert(`Something went wrong in fetch(publishUnpublishedPost)`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong in fetch(publishUnpublishedPost) here");
+    }
+  };
+
   return (
     <div className="unpublishedPostDivs">
       {loading ? (
@@ -82,7 +111,13 @@ function UnpublishedPosts() {
               <div className="buttons">
                 <button type="button">Edit</button>{" "}
                 {/* Inputs containing current values replace position & Save button */}
-                <button type="button">Publish</button>
+                <button
+                  type="button"
+                  onClick={handlePublishUnpublishedPost}
+                  value={post.id}
+                >
+                  Publish
+                </button>
                 <button
                   type="button"
                   onClick={handleDeleteUnpublishedPost}
