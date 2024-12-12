@@ -1,4 +1,5 @@
 import Login from "./login";
+import Posts from "./posts";
 import "../styles/posts.css";
 
 function VisitorMessage() {
@@ -9,7 +10,12 @@ function VisitorMessage() {
     if (!token) {
       return <Login />;
     } else {
-      return <h2>Welcome Back {username}</h2>;
+      return (
+        <>
+          <h2>Welcome Back {username}</h2>
+          <Posts />
+        </>
+      );
     }
   }
 
