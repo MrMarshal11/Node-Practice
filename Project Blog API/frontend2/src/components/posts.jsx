@@ -34,6 +34,35 @@ function Posts() {
     displayPosts();
   }, []);
 
+  // Delete post functionality
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const postId = e.target.value;
+
+    try {
+      const response = await fetch(
+        `http://localhost:8000/deletePost?postId=${postId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        alert("Delete successful!");
+        displayPosts();
+      } else {
+        alert(`Something went wrong in fetch(deletePost)`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong in fetch(deletePost) here");
+    }
+  };
+
   return (
     <div className="postDivs">
       {loading ? (
@@ -50,6 +79,13 @@ function Posts() {
               <h4>
                 By {post.name}, {post.uploadedAt}
               </h4>
+              <div className="buttons">
+                <button type="button">Edit</button>{" "}
+                {/* Inputs containing current values replace position & Republish button */}
+                <button type="button" onClick={handleDelete} value={post.id}>
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </>

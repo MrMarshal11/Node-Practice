@@ -109,7 +109,7 @@ function NewPost() {
           </label>
         </fieldset>
         <button type="submit">Publish</button>
-        <button type="button" name="action" value="save" onClick={handleSave}>
+        <button type="button" onClick={handleSave}>
           Save
         </button>
       </form>

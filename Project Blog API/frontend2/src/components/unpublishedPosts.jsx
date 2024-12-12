@@ -50,6 +50,12 @@ function UnpublishedPosts() {
               <h4>
                 By {post.name}, {post.uploadedAt}
               </h4>
+              <div className="buttons">
+                <button type="button">Edit</button>{" "}
+                {/* Inputs containing current values replace position & Save button */}
+                <button type="button">Publish</button>
+                <button type="button">Delete</button>
+              </div>
             </div>
           ))}
         </>
