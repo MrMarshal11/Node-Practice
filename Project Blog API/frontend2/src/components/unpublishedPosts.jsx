@@ -29,7 +29,7 @@ function UnpublishedPosts() {
     }
   }
 
-  // When component mounts, display posts & comments.
+  // When component mounts, display unpublished posts.
   useEffect(() => {
     displayPosts();
   }, []);
@@ -82,7 +82,7 @@ function UnpublishedPosts() {
 
       if (response.ok) {
         alert("Publish successful!");
-        displayPosts();
+        window.location.reload(false);
       } else {
         alert(`Something went wrong in fetch(publishUnpublishedPost)`);
       }

@@ -63,6 +63,54 @@ function Posts() {
     }
   };
 
+  // Edit published post functionality...
+  const [showForm, setShowForm] = useState({});
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (postId, e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [postId]: {
+        ...prev[postId],
+        [e.target.name]: e.target.value,
+      },
+    }));
+  };
+
+  const handleSubmit = async (e, postId) => {
+    e.preventDefault();
+
+    const currentFormData = formData[postId];
+    if (!currentFormData) return;
+
+    try {
+      const response = await fetch("http://localhost:8000/editPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        alert("Post edited successfully!");
+        setFormData((prev) => ({
+          ...prev,
+          [postId]: { name: "", comment: "" },
+        }));
+        setShowForm((prev) => ({ ...prev, [postId]: false })); // Hide form after submission
+        displayPosts();
+      } else {
+        console.error("Failed to edit post");
+      }
+    } catch (error) {
+      console.error("Error submitting edited post", error);
+    }
+  };
+
+  const toggleForm = (postId) => {
+    setShowForm((prev) => ({ ...prev, [postId]: !prev[postId] }));
+  };
+
   return (
     <div className="postDivs">
       {loading ? (
@@ -80,7 +128,53 @@ function Posts() {
                 By {post.name}, {post.uploadedAt}
               </h4>
               <div className="buttons">
-                <button type="button">Edit</button>{" "}
+                {/* Edit form functionality (could make it a separate component) */}
+                <button type="button" onClick={() => toggleForm(post.id)}>
+                  Edit
+                </button>
+                {showForm[post.id] && (
+                  <form
+                    className="postCommentForm"
+                    onSubmit={(e) => handleSubmit(e, post.id)}
+                  >
+                    <fieldset>
+                      <label>
+                        Title:
+                        <input
+                          id={`title-${post.id}`}
+                          name="title"
+                          type="text"
+                          onChange={(e) => handleChange(post.id, e)}
+                          value={formData[post.id]?.title || ""}
+                        />
+                      </label>
+                    </fieldset>
+                    <fieldset>
+                      <label>
+                        Description:
+                        <textarea
+                          id={`description-${post.id}`}
+                          name="description"
+                          type="text"
+                          onChange={(e) => handleChange(post.id, e)}
+                          value={formData[post.id]?.description || ""}
+                          required
+                          cols={30}
+                          rows={7}
+                        />
+                      </label>
+                    </fieldset>
+                    <input
+                      id="postId"
+                      name="postId"
+                      type="hidden"
+                      value={post.id}
+                      onChange={handleChange}
+                    />
+                    <button type="submit">Republish</button>
+                  </form>
+                )}
+
                 {/* Inputs containing current values replace position & Republish button */}
                 <button type="button" onClick={handleDelete} value={post.id}>
                   Delete
