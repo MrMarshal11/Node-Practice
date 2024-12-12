@@ -141,6 +141,20 @@ async function deletePostQuery(postId) {
   }
 }
 
+async function deleteUnpublishedPostQuery(postId) {
+  try {
+    await prisma.unpublishedPosts.delete({
+      where: {
+        id: postId,
+      },
+    });
+
+    console.log(`successfully deleted post: ${postId}`);
+  } catch (error) {
+    console.log(`error at deleteUnpublishedPostQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -152,4 +166,5 @@ export default {
   getUserUnpublishedPostsQuery,
   createUnpublishedPostQuery,
   deletePostQuery,
+  deleteUnpublishedPostQuery,
 };
