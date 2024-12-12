@@ -42,7 +42,7 @@ function Nav() {
           <img src="react.svg" alt="Blog Logo" />
         </Link>
         <h2>
-          <a href="http://localhost:1000" target="_blank">
+          <a href="https://blogapifrontend1.vercel.app/" target="_blank">
             Bloggo.com
             {/* Link to the other website */}
           </a>
