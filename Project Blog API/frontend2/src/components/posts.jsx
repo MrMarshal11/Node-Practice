@@ -172,6 +172,9 @@ function Posts() {
                       onChange={handleChange}
                     />
                     <button type="submit">Republish</button>
+                    <button type="button" onClick={() => toggleForm(post.id)}>
+                      Cancel
+                    </button>
                   </form>
                 )}
 

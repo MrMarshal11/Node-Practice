@@ -189,3 +189,11 @@ button:hover {
   background-color: rgb(255, 0, 234);
   cursor: pointer;
 }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 20px;
+}
