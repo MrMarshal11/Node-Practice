@@ -16,5 +16,6 @@ indexRouter.get("/userPosts", controller.getUserPosts);
 indexRouter.get("/userUnpublishedPosts", controller.getUserUnpublishedPosts);
 
 indexRouter.post("/newUnpublishedPost", controller.createNewUnpublishedPost);
+indexRouter.post("/deletePost", controller.deletePost);
 
 export default indexRouter;
