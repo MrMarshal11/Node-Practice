@@ -45,9 +45,6 @@ function Nav() {
           <img src="react.svg" alt="Blog Logo" />
         </Link>
         <h2>
-          <Link to="/">Bloggo.com</Link>
-        </h2>
-        <h2>
           <a href="http://localhost:2000" target="_blank">
             BloggoAuthor.com
             {/* Link to the other website */}
