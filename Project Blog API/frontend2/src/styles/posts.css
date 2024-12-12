@@ -8,6 +8,15 @@
   padding-top: 20px;
   padding-bottom: 20px;
   color: white;
+  h1 {
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgb(94, 94, 94);
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+  }
 }
 
 .post {
@@ -39,6 +48,15 @@
   padding-top: 20px;
   padding-bottom: 20px;
   color: white;
+  h1 {
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgb(27, 27, 27);
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+  }
 }
 
 .unpublishedPost {
@@ -64,6 +82,27 @@
   margin-bottom: 20px;
   font-size: 2rem;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  gap: 20px;
+  a {
+    background-color: rgb(192, 0, 176);
+    color: white;
+    font-weight: 1000;
+    border: 1px solid white;
+    margin-top: 10px;
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+  }
+  a:hover {
+    background-color: rgb(255, 0, 234);
+    cursor: pointer;
+  }
+  margin-bottom: 50px;
 }
 
 .commentDiv {

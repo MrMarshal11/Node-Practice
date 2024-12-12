@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Login from "./login";
 import Posts from "./posts";
 import UnpublishedPosts from "./unpublishedPosts";
@@ -13,9 +14,11 @@ function VisitorMessage() {
     } else {
       return (
         <>
-          <h2 className="visitorMessage">Welcome Back {username}</h2>
+          <div className="visitorMessage">
+            <h2>Welcome Back {username}</h2>
+            <Link to="/newPost">Make New Post?</Link>
+          </div>
           <Posts />
-
           <UnpublishedPosts />
         </>
       );
