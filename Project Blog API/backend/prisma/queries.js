@@ -111,6 +111,23 @@ async function getUserUnpublishedPostsQuery(userId) {
   }
 }
 
+async function createUnpublishedPostQuery(name, userId, title, description) {
+  try {
+    await prisma.unpublishedPosts.create({
+      data: {
+        name: name,
+        userId: userId,
+        title: title,
+        description: description,
+      },
+    });
+
+    console.log(`successfully saved post: ${title}`);
+  } catch (error) {
+    console.log(`error at createUnpublishedPostQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -120,4 +137,5 @@ export default {
   newCommentQuery,
   getUserPostsQuery,
   getUserUnpublishedPostsQuery,
+  createUnpublishedPostQuery,
 };

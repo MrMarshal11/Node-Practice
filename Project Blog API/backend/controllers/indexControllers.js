@@ -110,6 +110,25 @@ async function getUserUnpublishedPosts(req, res) {
   }
 }
 
+async function createNewUnpublishedPost(req, res) {
+  try {
+    const { title, description, username } = req.body;
+
+    const user = await model.getUserFromUsername(username);
+
+    await model.createUnpublishedPostQuery(
+      user.fullname,
+      user.id,
+      title,
+      description
+    );
+
+    res.status(201).json({ message: "Save successful" });
+  } catch (error) {
+    console.log(`error at createNewUnpublishedPost(), ${error}`);
+  }
+}
+
 export default {
   signUp,
   verifyLogin,
@@ -119,4 +138,5 @@ export default {
   postComment,
   getUserPosts,
   getUserUnpublishedPosts,
+  createNewUnpublishedPost,
 };
