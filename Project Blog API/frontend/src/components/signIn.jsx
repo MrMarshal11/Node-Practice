@@ -28,20 +28,17 @@ function SignIn() {
     }
 
     try {
-      const response = await fetch(
-        "https://blog-api-backend-zvw9.onrender.com/signIn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formData.username,
-            fullname: formData.firstName + " " + formData.lastName,
-            password: formData.password,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:8000/signIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          fullname: formData.firstName + " " + formData.lastName,
+          password: formData.password,
+        }),
+      });
 
       if (response.ok) {
         alert("Signup successful!");

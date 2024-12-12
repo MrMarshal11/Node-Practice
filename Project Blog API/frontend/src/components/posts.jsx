@@ -11,12 +11,15 @@ function Posts() {
   async function displayPosts() {
     try {
       setLoading(true); // Show loading screen
-      const response = await fetch("http://localhost:8000/posts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://blog-api-backend-zvw9.onrender.com/posts",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       setPosts(data);
       setLoading(false);
@@ -51,13 +54,16 @@ function Posts() {
     if (!currentFormData) return;
 
     try {
-      const response = await fetch("http://localhost:8000/newComment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://blog-api-backend-zvw9.onrender.com/newComment",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (response.ok) {
         alert("Comment submitted successfully!");
         setFormData((prev) => ({
