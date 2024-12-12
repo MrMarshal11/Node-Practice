@@ -1,7 +1,19 @@
+import Login from "./login";
 import "../styles/posts.css";
 
 function VisitorMessage() {
-  return <div className="visitorMessage">Wow you finally here.</div>;
+  const token = localStorage.getItem("accessToken");
+  const username = localStorage.getItem("username");
+
+  function isLoggedIn() {
+    if (!token) {
+      return <Login />;
+    } else {
+      return <h2>Welcome Back {username}</h2>;
+    }
+  }
+
+  return isLoggedIn();
 }
 
 export default VisitorMessage;

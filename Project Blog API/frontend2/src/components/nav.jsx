@@ -1,7 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/nav.css";
 
 function Nav() {
+  const token = localStorage.getItem("accessToken");
+  const navigate = useNavigate();
+
+  function logout() {
+    localStorage.clear();
+    navigate("/");
+  }
+
+  function isLoggedIn() {
+    if (!token) {
+      return (
+        <>
+          <h2>
+            <Link to="/login">Login</Link>
+          </h2>
+          <h2>
+            <Link to="/signIn">Sign in</Link>
+          </h2>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h2>
+            <a onClick={logout} style={{ cursor: "pointer" }}>
+              Logout
+            </a>
+          </h2>
+        </>
+      );
+    }
+  }
+
   return (
     <nav>
       <div className="navLeft">
@@ -9,18 +42,14 @@ function Nav() {
           <img src="react.svg" alt="Blog Logo" />
         </Link>
         <h2>
-          <Link to="/">BloggoAuthor.com</Link>
+          <a href="http://localhost:1000" target="_blank">
+            Bloggo.com
+            {/* Link to the other website */}
+          </a>
         </h2>
       </div>
 
-      <div className="navRight">
-        <h2>
-          <Link to="/login">Login</Link>
-        </h2>
-        <h2>
-          <Link to="/signIn">Sign in</Link>
-        </h2>
-      </div>
+      <div className="navRight">{isLoggedIn()}</div>
     </nav>
   );
 }

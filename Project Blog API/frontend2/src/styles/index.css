@@ -4,7 +4,11 @@
 }
 
 body {
-  background-image: radial-gradient(white, rgb(173, 0, 179), rgb(48, 1, 48));
+  background-image: radial-gradient(
+    rgb(153, 153, 153),
+    rgb(16, 0, 87),
+    rgb(8, 1, 48)
+  );
   min-height: 100vh;
   height: auto;
   display: flex;
