@@ -84,6 +84,20 @@ async function newCommentQuery(name, comment, postId) {
   }
 }
 
+// Frontend2 queries below:
+async function getUserPostsQuery(userId) {
+  try {
+    const posts = await prisma.posts.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return posts;
+  } catch (error) {
+    console.log(`error at getUserPostsQuery(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -91,4 +105,5 @@ export default {
   getPostsQuery,
   getCommentsQuery,
   newCommentQuery,
+  getUserPostsQuery,
 };

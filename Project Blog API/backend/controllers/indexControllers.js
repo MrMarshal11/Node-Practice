@@ -83,6 +83,20 @@ async function postComment(req, res) {
   }
 }
 
+// Frontend2 controllers below:
+async function getUserPosts(req, res) {
+  try {
+    const { username } = req.query;
+
+    const user = await model.getUserFromUsername(username);
+
+    const posts = await model.getUserPostsQuery(user.id);
+    res.status(201).json(posts);
+  } catch (error) {
+    console.log(`error at getUserPosts(), ${error}`);
+  }
+}
+
 export default {
   signUp,
   verifyLogin,
@@ -90,4 +104,5 @@ export default {
   getPosts,
   getComments,
   postComment,
+  getUserPosts,
 };
