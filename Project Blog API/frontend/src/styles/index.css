@@ -10,7 +10,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px; /* change in the future */
   padding-bottom: 50px;
 }
 
