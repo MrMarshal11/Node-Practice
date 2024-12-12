@@ -155,6 +155,28 @@ async function deleteUnpublishedPost(req, res) {
   }
 }
 
+async function postUnpublishedPost(req, res) {
+  try {
+    const { postId } = req.query;
+    const postIdInt = parseInt(postId);
+
+    const post = await model.getPostFromPostId(postIdInt);
+
+    await model.createPostQuery(
+      post.name,
+      post.userId,
+      post.title,
+      post.description
+    );
+
+    await model.deleteUnpublishedPostQuery(postIdInt);
+
+    res.status(201).json({ message: `Publish successful` });
+  } catch (error) {
+    console.log(`error at postUnpublishedPost(), ${error}`);
+  }
+}
+
 export default {
   signUp,
   verifyLogin,
@@ -167,4 +189,5 @@ export default {
   createNewUnpublishedPost,
   deletePost,
   deleteUnpublishedPost,
+  postUnpublishedPost,
 };

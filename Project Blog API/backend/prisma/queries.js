@@ -1,4 +1,3 @@
-import { name } from "ejs";
 import prisma from "./prisma.js";
 
 async function createUserQuery(username, fullname, hashedPassword) {
@@ -155,6 +154,21 @@ async function deleteUnpublishedPostQuery(postId) {
   }
 }
 
+async function getPostFromPostId(postId) {
+  try {
+    const post = await prisma.unpublishedPosts.findFirst({
+      where: {
+        id: postId,
+      },
+    });
+
+    console.log(`found post: ${postId}`);
+    return post;
+  } catch (error) {
+    console.log(`error at getPostFromPostId(), ${error}`);
+  }
+}
+
 export default {
   createUserQuery,
   getUserFromUsername,
@@ -167,4 +181,5 @@ export default {
   createUnpublishedPostQuery,
   deletePostQuery,
   deleteUnpublishedPostQuery,
+  getPostFromPostId,
 };
