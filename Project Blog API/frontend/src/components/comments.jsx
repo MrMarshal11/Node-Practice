@@ -13,7 +13,7 @@ function Comments() {
   async function displayComments() {
     try {
       const response = await fetch(
-        `http://localhost:8000/comments?postId=${postId}`,
+        `https://blog-api-backend-zvw9.onrender.com/comments?postId=${postId}`,
         {
           method: "GET",
           headers: {
