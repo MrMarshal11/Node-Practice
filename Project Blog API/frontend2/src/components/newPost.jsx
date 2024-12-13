@@ -18,17 +18,20 @@ function NewPost() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8000/newPost", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          description: formData.description,
-          username: username,
-        }),
-      });
+      const response = await fetch(
+        "https://blog-api-backend-zvw9.onrender.com/newPost",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: formData.title,
+            description: formData.description,
+            username: username,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("Post successful!");
@@ -46,17 +49,20 @@ function NewPost() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8000/newUnpublishedPost", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          description: formData.description,
-          username: username,
-        }),
-      });
+      const response = await fetch(
+        "https://blog-api-backend-zvw9.onrender.com/newUnpublishedPost",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: formData.title,
+            description: formData.description,
+            username: username,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("Save successful!");

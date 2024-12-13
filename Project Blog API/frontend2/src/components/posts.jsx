@@ -13,7 +13,7 @@ function Posts() {
     try {
       setLoading(true); // Show loading screen
       const response = await fetch(
-        `http://localhost:8000/userPosts?username=${username}`,
+        `https://blog-api-backend-zvw9.onrender.com/userPosts?username=${username}`,
         {
           method: "GET",
           headers: {
@@ -42,7 +42,7 @@ function Posts() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/deletePost?postId=${postId}`,
+        `https://blog-api-backend-zvw9.onrender.com/deletePost?postId=${postId}`,
         {
           method: "POST",
           headers: {
@@ -84,13 +84,16 @@ function Posts() {
     if (!currentFormData) return;
 
     try {
-      const response = await fetch("http://localhost:8000/editPost", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://blog-api-backend-zvw9.onrender.com/editPost",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (response.ok) {
         alert("Post edited successfully!");
         setFormData((prev) => ({

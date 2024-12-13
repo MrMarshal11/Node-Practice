@@ -13,7 +13,7 @@ function UnpublishedPosts() {
     try {
       setLoading(true); // Show loading screen
       const response = await fetch(
-        `http://localhost:8000/userUnpublishedPosts?username=${username}`,
+        `https://blog-api-backend-zvw9.onrender.com/userUnpublishedPosts?username=${username}`,
         {
           method: "GET",
           headers: {
@@ -42,7 +42,7 @@ function UnpublishedPosts() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/deleteUnpublishedPost?postId=${postId}`,
+        `https://blog-api-backend-zvw9.onrender.com/deleteUnpublishedPost?postId=${postId}`,
         {
           method: "POST",
           headers: {
@@ -71,7 +71,7 @@ function UnpublishedPosts() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/publishUnpublishedPost?postId=${postId}`,
+        `https://blog-api-backend-zvw9.onrender.com/publishUnpublishedPost?postId=${postId}`,
         {
           method: "POST",
           headers: {
@@ -114,7 +114,7 @@ function UnpublishedPosts() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/editUnpublishedPost",
+        "https://blog-api-backend-zvw9.onrender.com/editUnpublishedPost",
         {
           method: "POST",
           headers: {
